@@ -9,19 +9,25 @@
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 52rem; margin: 3rem auto; padding: 0 1.25rem; color: #222; line-height: 1.5; }
   h1 { font-size: 2.4rem; margin-bottom: 0.2rem; }
   .tagline { font-size: 1.2rem; color: #555; margin-top: 0; }
-  .menu { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 1rem; margin: 2rem 0; }
+  .menu { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 2rem 1rem; margin: 2rem 0; }
   @media (max-width: 40rem) { .menu { grid-template-columns: 1fr; } }
-  .menu a { display: block; padding: 1.2rem 1.25rem; color: #fff; text-decoration: none; border-radius: 8px; }
-  .menu a:nth-child(1) { background: #1f4e79; }
-  .menu a:nth-child(2) { background: #922913; }
-  .menu a:nth-child(3) { background: #E9A14D; }
-  .menu a:nth-child(4) { background: #1f4e79; }
-  .menu a:hover, .menu a:focus { filter: brightness(1.15); }
+  .menu .item { display: flex; flex-direction: column; gap: 0.4rem; }
+  .menu .button { flex: 1; display: block; padding: 1.2rem 1.25rem; color: #fff; text-decoration: none; border-radius: 8px; }
+  .menu .item:nth-child(1) .button { background: #1f4e79; }
+  .menu .item:nth-child(2) .button { background: #922913; }
+  .menu .item:nth-child(3) .button { background: #E9A14D; }
+  .menu .item:nth-child(4) .button { background: #1f4e79; }
+  .menu .button:hover, .menu .button:focus { filter: brightness(1.15); }
+  .menu .meta { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .menu .meta img { display: block; height: 20px; }
   .menu .name { display: block; font-size: 1.35rem; font-weight: 600; }
+  .badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0 0; }
+  .badges img { display: block; height: 28px; }
   .menu .desc { display: block; font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); margin-top: 0.3rem; }
 </style>
 </head>
 <body>
+
 
 <h1>spm1d.org</h1>
 <p class="tagline">Documentation for one-dimensional Statistical Parametric Mapping and related packages</p>
@@ -29,12 +35,41 @@
 <br>
 
 <nav class="menu">
-<a href="spm1d-v0.4/"><span class="name">spm1d v0.4</span><span class="desc">One-dimensional Statistical Parametric Mapping (Python)</span></a>
-<a href="rft1d/"><span class="name">rft1d</span><span class="desc">Random Field Theory expectations for upcrossings in 1D continua</span></a>
-<a href="power1d/"><span class="name">power1d</span><span class="desc">Statistical power for 1D continua</span></a>
-<a href="spm1d-v0.4/install/InstallationMatlab.html"><span class="name">spm1d v0.4</span><span class="desc">(MATLAB)</span></a>
+<div class="item">
+<a class="button" href="spm1d-v0.4/"><span class="name">spm1d v0.4</span><span class="desc">One-dimensional Statistical Parametric Mapping (Python)</span></a>
+<span class="meta">
+<a class="stars" href="https://github.com/spm1d-org/spm1d-v0.4"><img src="https://img.shields.io/github/stars/spm1d-org/spm1d-v0.4?style=social" alt="spm1d-v0.4 GitHub stars"></a>
+<a href="https://pypistats.org/packages/spm1d"><img src="https://img.shields.io/pypi/dm/spm1d?label=downloads" alt="spm1d downloads per month"></a>
+</span>
+</div>
+<div class="item">
+<a class="button" href="rft1d/"><span class="name">rft1d</span><span class="desc">Random Field Theory expectations for upcrossings in 1D continua</span></a>
+<span class="meta">
+<a class="stars" href="https://github.com/spm1d-org/rft1d"><img src="https://img.shields.io/github/stars/spm1d-org/rft1d?style=social" alt="rft1d GitHub stars"></a>
+<a href="https://pypistats.org/packages/rft1d"><img src="https://img.shields.io/pypi/dm/rft1d?label=downloads" alt="rft1d downloads per month"></a>
+</span>
+</div>
+<div class="item">
+<a class="button" href="power1d/"><span class="name">power1d</span><span class="desc">Statistical power for 1D continua</span></a>
+<span class="meta">
+<a class="stars" href="https://github.com/spm1d-org/power1d"><img src="https://img.shields.io/github/stars/spm1d-org/power1d?style=social" alt="power1d GitHub stars"></a>
+<a href="https://pypistats.org/packages/power1d"><img src="https://img.shields.io/pypi/dm/power1d?label=downloads" alt="power1d downloads per month"></a>
+</span>
+</div>
+<div class="item">
+<a class="button" href="spm1d-v0.4/install/InstallationMatlab.html"><span class="name">spm1d v0.4</span><span class="desc">(MATLAB)</span></a>
+<span class="meta">
+<a class="stars" href="https://github.com/spm1d-org/spm1d-matlab-v0.4"><img src="https://img.shields.io/github/stars/spm1d-org/spm1d-matlab-v0.4?style=social" alt="spm1d-matlab-v0.4 GitHub stars"></a>
+</span>
+</div>
 
 </nav>
+
+<br>
+<br>
+
+<a href="https://github.com/spm1d-org"><img src="https://img.shields.io/badge/GitHub-spm1d--org-181717?style=for-the-badge&amp;logo=github&amp;logoColor=white" alt="GitHub: spm1d-org"></a>
+
 
 </body>
 </html>
