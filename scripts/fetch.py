@@ -2,8 +2,10 @@
 Bring the fetched-html folder up to date with the child repositories.
 
 For every child in children.json this finds the latest successful run of the
-child's docs workflow and, if it differs from the run recorded in runs.json,
-downloads that run's HTML artifact into <fetched>/<child>/.  When the
+child's workflows that build the docs (a release run of publish, or a manual
+run of docs) and, if it differs from the run recorded in runs.json, downloads
+that run's HTML artifact into <fetched>/<child>/.  Both workflows refuse to
+run anywhere but master, so no branch filter is needed.  When the
 workflow was started by a child's signal, the signalling run (CHILD, RUN_ID)
 is used for that child instead:  its artifact is ready although the run has
 not finished yet.
@@ -43,19 +45,23 @@ def gh(*args):
 
 
 def latest_run(c):
-    return gh('run', 'list', '-R', c['repo'], '-w', c['workflow'], '-b', c['branch'], '-s', 'success',
-              '-L', '1', '--json', 'databaseId', '-q', '.[0].databaseId')
+    #  newest successful run of any of the child's workflows;  a workflow that
+    #  does not exist (yet) in the child is skipped
+    found = []
+    for w in c['workflows']:
+        try:
+            found += json.loads(gh('run', 'list', '-R', c['repo'], '-w', w, '-s', 'success',
+                                   '-L', '1', '--json', 'databaseId,createdAt') or '[]')
+        except subprocess.CalledProcessError as e:
+            print(f'::notice::{c["repo"]}: no runs of workflow {w}: {e.stderr.strip()}')
+    return str(max(found, key=lambda r: r['createdAt'])['databaseId']) if found else ''
 
 
 changed = False
 for name, c in children.items():
-    try:
-        run = signal_run if name == signal_child else latest_run(c)
-    except subprocess.CalledProcessError as e:
-        print(f'::warning::{name}: cannot list runs of {c["repo"]}: {e.stderr.strip()}')
-        continue
+    run = signal_run if name == signal_child else latest_run(c)
     if not run:
-        print(f'::warning::{name}: no successful run of workflow {c["workflow"]} in {c["repo"]}')
+        print(f'::warning::{name}: no successful run of {" or ".join(c["workflows"])} in {c["repo"]}')
         continue
     if runs.get(name) == run and (fetched / name).is_dir():
         print(f'{name}: up to date (run {run})')
