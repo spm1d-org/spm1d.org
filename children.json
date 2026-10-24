@@ -1,0 +1,21 @@
+{
+  "spm1d-v0.4": {
+    "repo": "spm1d-org/spm1d-v0.4",
+    "branch": "master",
+    "workflow": "docs",
+    "artifact": "docs-html",
+    "redirect_from_root": true
+  },
+  "rft1d": {
+    "repo": "spm1d-org/rft1d",
+    "branch": "master",
+    "workflow": "docs",
+    "artifact": "docs-html"
+  },
+  "power1d": {
+    "repo": "spm1d-org/power1d",
+    "branch": "master",
+    "workflow": "docs",
+    "artifact": "docs-html"
+  }
+}

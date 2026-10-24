@@ -1,0 +1,83 @@
+name: deploy
+
+#  Update the fetched-html branch from the children's docs builds, assemble
+#  the site and deploy it to GitHub Pages:
+#    /            the pages in site/
+#    /<child>/    each child's HTML (children.json), stored on fetched-html
+#    old v0.4 addresses redirect to /spm1d-v0.4/
+#
+#  A child signals a new build with a repository_dispatch event of type
+#  docs-updated and client_payload {"child": "<name>", "run_id": "<run id>"}.
+
+on:
+  push:
+    branches: [ main ]
+  repository_dispatch:
+    types: [ docs-updated ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: site
+  cancel-in-progress: false
+
+jobs:
+
+  assemble:
+    runs-on: ubuntu-24.04
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v5
+
+    - name: Read the fetched-html branch
+      run: |
+        mkdir fetched
+        if git fetch --depth 1 origin fetched-html; then
+          git archive FETCH_HEAD | tar -x -C fetched
+        else
+          echo "no fetched-html branch yet"
+        fi
+
+    - name: Fetch new docs builds
+      id: fetch
+      env:
+        GH_TOKEN: ${{ secrets.DOCS_TOKEN }}
+        CHILD: ${{ github.event.client_payload.child }}
+        RUN_ID: ${{ github.event.client_payload.run_id }}
+      run: python scripts/fetch.py fetched
+
+    - name: Store the fetched HTML
+      if: steps.fetch.outputs.changed == 'true'
+      env:
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        cd fetched
+        git init -q -b fetched-html
+        git add -A
+        git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -q -m "update fetched html"
+        git push -q -f "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" fetched-html
+
+    - name: Assemble the site
+      run: python scripts/assemble.py --fetched fetched --out _site
+
+    - name: Upload
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: _site
+
+  deploy:
+    needs: assemble
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - name: Deploy
+      id: deployment
+      uses: actions/deploy-pages@v4
