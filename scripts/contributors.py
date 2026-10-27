@@ -4,7 +4,7 @@ Write the list of code contributors to <dir>/contributors.json.
 Reads the commits of each repository in REPOS through the GitHub API and
 lists every GitHub user who authored a commit, most recent contributor
 first, as [{"login": ..., "name": ...}, ...].  Commits whose author is not
-linked to a GitHub account, and bots, are left out.  Dates are not written:
+linked to a GitHub account, bots and the accounts in EXCLUDE are left out.  Dates are not written:
 the landing page shows names only.
 
     python scripts/contributors.py fetched
@@ -28,6 +28,7 @@ REPOS = [
     'spm1d-org/rft1d',
     'spm1d-org/power1d',
 ]
+EXCLUDE = {'0todd0000'}                          # the maintainer, credited in the page footer
 
 
 def get(url):
@@ -54,7 +55,7 @@ def contributors():
     for repo in REPOS:
         for c in pages(f'{API}/repos/{repo}/commits?per_page=100'):
             user = c.get('author')
-            if not user or is_bot(user):
+            if not user or is_bot(user) or user['login'] in EXCLUDE:
                 continue
             date = c['commit']['author']['date']
             if date > last.get(user['login'], ''):
