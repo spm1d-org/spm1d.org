@@ -8,6 +8,9 @@ name: deploy
 #
 #  A child signals a new build with a repository_dispatch event of type
 #  docs-updated and client_payload {"child": "<name>", "run_id": "<run id>"}.
+#
+#  It also runs daily, to refresh the code contributors list
+#  (scripts/contributors.py), which is stored on fetched-html too.
 
 on:
   push:
@@ -15,6 +18,8 @@ on:
   repository_dispatch:
     types: [ docs-updated ]
   workflow_dispatch:
+  schedule:
+    - cron: '30 2 * * *'
 
 permissions:
   contents: write
@@ -52,8 +57,14 @@ jobs:
         RUN_ID: ${{ github.event.client_payload.run_id }}
       run: python scripts/fetch.py fetched
 
+    - name: List the code contributors
+      id: contributors
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: python scripts/contributors.py fetched
+
     - name: Store the fetched HTML
-      if: steps.fetch.outputs.changed == 'true'
+      if: steps.fetch.outputs.changed == 'true' || steps.contributors.outputs.changed == 'true'
       env:
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |

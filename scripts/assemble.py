@@ -9,6 +9,10 @@ Assemble the site from the site's own pages and the children's HTML.
 All links are relative, so the site works both at spm1d.org and at its
 GitHub Pages project address (spm1d-org.github.io/spm1d.org/).
 
+The landing page's code contributors ticker is filled from
+<fetched>/contributors.json (written by contributors.py);  without that file
+the ticker is left out.
+
 Every HTML page except the redirect stubs gets the GoatCounter snippet
 (pages that already carry it are left as they are).
 
@@ -25,6 +29,7 @@ HTML is left out with a warning.
 '''
 
 import argparse
+import html
 import json
 import os
 import re
@@ -63,6 +68,22 @@ if out.exists():
 shutil.copytree(root / 'site', out)
 shutil.copy(root / 'CNAME', out / 'CNAME')
 (out / '.nojekyll').touch()
+
+ENTRY  = '<a class="entry" href="https://github.com/{login}"><img src="https://github.com/{login}.png?size=56" alt="" width="28" height="28" loading="lazy"><span>{name}</span></a>'
+clist  = args.fetched / 'contributors.json' if args.fetched else None
+people = json.loads(clist.read_text()) if clist and clist.is_file() and clist.read_text().strip() else []
+index  = out / 'index.html'
+text   = index.read_text(encoding='utf-8')
+if people:
+    half  = [ENTRY.format(login=html.escape(p['login']), name=html.escape(p['name'])) for p in people]
+    half *= -(-10 // len(half))                  # at least 10 entries per half, so the loop shows no gap
+    text  = text.replace('<!-- contributors list -->', '\n'.join(half + half))   # doubled: the track scrolls by half its width
+    text  = text.replace('style="--dur: 40s"', f'style="--dur: {4 * len(half)}s"')
+    print(f'contributors ticker: {len(people)} contributors')
+else:
+    text  = re.sub(r'<!-- contributors -->.*?<!-- /contributors -->\n?', '', text, flags=re.S)
+    print('warning: no contributors.json, contributors ticker left out')
+index.write_text(text, encoding='utf-8')
 
 included = []
 for name in children:

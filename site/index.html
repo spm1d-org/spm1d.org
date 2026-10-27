@@ -25,6 +25,15 @@
   .badges img { display: block; height: 28px; }
   .menu .desc { display: block; font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); margin-top: 0.3rem; }
   .org { display: flex; justify-content: center; margin-top: 2rem; }
+  .tickers { margin: 2.5rem 0 1rem; }
+  .ticker .label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #666; margin-bottom: 0.35rem; }
+  .ticker .window { overflow: hidden; border: 1px solid #e5e5e5; border-radius: 8px; background: #fafafa; mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+  .ticker .track { display: flex; width: max-content; gap: 2rem; padding: 0.6rem 1rem; animation: scroll var(--dur, 40s) linear infinite; }
+  .ticker .window:hover .track { animation-play-state: paused; }
+  .ticker .entry { display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; color: #222; text-decoration: none; font-size: 0.95rem; }
+  .ticker .entry img { border-radius: 50%; flex: none; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ticker .track { animation: none; flex-wrap: wrap; width: auto; } }
   .credit { display: flex; align-items: center; justify-content: flex-end; gap: 0.8rem; margin-top: 3rem; font-size: 0.95rem; color: #555; text-align: right; }
   .credit a { color: inherit; }
   .credit img { display: block; height: 96px; }
@@ -68,6 +77,17 @@
 </div>
 
 </nav>
+
+<!-- contributors -->
+<section class="tickers">
+<div class="ticker">
+<div class="label">Code contributors</div>
+<div class="window"><div class="track" style="--dur: 40s">
+<!-- contributors list -->
+</div></div>
+</div>
+</section>
+<!-- /contributors -->
 
 
 
