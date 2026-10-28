@@ -17,6 +17,7 @@
   .menu .item:nth-child(2) .button { background: #922913; }
   .menu .item:nth-child(3) .button { background: #E9A14D; }
   .menu .item:nth-child(4) .button { background: #1f4e79; }
+  .menu .item:nth-child(5) .button { background: #922913; }
   .menu .button:hover, .menu .button:focus { filter: brightness(1.15); }
   .menu .meta { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .menu .meta img { display: block; height: 20px; }
@@ -37,13 +38,18 @@
   .credit { display: flex; align-items: center; justify-content: flex-end; gap: 0.8rem; margin-top: 3rem; font-size: 0.95rem; color: #555; text-align: right; }
   .credit a { color: inherit; }
   .credit img { display: block; height: 96px; }
+  .star-btn { height: 20px; vertical-align: middle; border: 1px solid #d0d7de; border-radius: 6px; }
+  .star-note { font-size: 0.95rem; color: #555; margin: -0.5rem 0 0; }
+  .ai-note { font-size: 0.85rem; color: #777; text-align: right; margin: 0.5rem 0 0; }
+  .ai-note a { color: inherit; }
 </style>
 </head>
 <body>
 
 
 <h1>spm1d.org</h1>
-<p class="tagline">Documentation for one-dimensional Statistical Parametric Mapping and related packages</p>
+<p class="tagline">Home of the "One-dimensional Statistical Parametric Mapping" project.</p>
+<p>Here you will find documentation for spm1d and related packages</p>
 
 <br>
 
@@ -51,32 +57,40 @@
 <div class="item">
 <a class="button" href="spm1d-v0.4/"><span class="name">spm1d v0.4</span><span class="desc">One-dimensional Statistical Parametric Mapping (Python)</span></a>
 <span class="meta">
-<a class="stars" href="https://github.com/spm1d-org/spm1d-v0.4"><img src="https://img.shields.io/github/stars/spm1d-org/spm1d-v0.4?style=social" alt="spm1d-v0.4 GitHub stars"></a>
+<a class="stars" href="https://github.com/spm1d-org/spm1d-v0.4"><img src="https://img.shields.io/badge/Star-white?style=social&amp;logo=github" alt="Star spm1d-v0.4 on GitHub"></a>
 <a href="https://pypistats.org/packages/spm1d"><img src="https://img.shields.io/pypi/dm/spm1d?label=downloads" alt="spm1d downloads per month"></a>
 </span>
 </div>
 <div class="item">
 <a class="button" href="rft1d/"><span class="name">rft1d</span><span class="desc">Random Field Theory expectations for upcrossings in 1D continua</span></a>
 <span class="meta">
-<a class="stars" href="https://github.com/spm1d-org/rft1d"><img src="https://img.shields.io/github/stars/spm1d-org/rft1d?style=social" alt="rft1d GitHub stars"></a>
+<a class="stars" href="https://github.com/spm1d-org/rft1d"><img src="https://img.shields.io/badge/Star-white?style=social&amp;logo=github" alt="Star rft1d on GitHub"></a>
 <a href="https://pypistats.org/packages/rft1d"><img src="https://img.shields.io/pypi/dm/rft1d?label=downloads" alt="rft1d downloads per month"></a>
 </span>
 </div>
 <div class="item">
 <a class="button" href="power1d/"><span class="name">power1d</span><span class="desc">Statistical power for 1D continua</span></a>
 <span class="meta">
-<a class="stars" href="https://github.com/spm1d-org/power1d"><img src="https://img.shields.io/github/stars/spm1d-org/power1d?style=social" alt="power1d GitHub stars"></a>
+<a class="stars" href="https://github.com/spm1d-org/power1d"><img src="https://img.shields.io/badge/Star-white?style=social&amp;logo=github" alt="Star power1d on GitHub"></a>
 <a href="https://pypistats.org/packages/power1d"><img src="https://img.shields.io/pypi/dm/power1d?label=downloads" alt="power1d downloads per month"></a>
 </span>
 </div>
 <div class="item">
 <a class="button" href="spm1d-v0.4/install/InstallationMatlab.html"><span class="name">spm1d v0.4</span><span class="desc">(MATLAB)</span></a>
 <span class="meta">
-<a class="stars" href="https://github.com/spm1d-org/spm1d-matlab-v0.4"><img src="https://img.shields.io/github/stars/spm1d-org/spm1d-matlab-v0.4?style=social" alt="spm1d-matlab-v0.4 GitHub stars"></a>
+<a class="stars" href="https://github.com/spm1d-org/spm1d-matlab-v0.4"><img src="https://img.shields.io/badge/Star-white?style=social&amp;logo=github" alt="Star spm1d-matlab-v0.4 on GitHub"></a>
+</span>
+</div>
+<div class="item">
+<a class="button" href="https://github.com/spm1d-org/registration1d"><span class="name">registration1d</span><span class="desc">Linear and nonlinear registration of one-dimensional data</span></a>
+<span class="meta">
+<a class="stars" href="https://github.com/spm1d-org/registration1d"><img src="https://img.shields.io/badge/Star-white?style=social&amp;logo=github" alt="Star registration1d on GitHub"></a>
 </span>
 </div>
 
 </nav>
+
+<p class="star-note">&#9733;  Find a package useful?  Please click on one of the <img src="https://img.shields.io/badge/Star-white?style=social&amp;logo=github" alt="GitHub" style="vertical-align: middle"> icons above then press <img class="star-btn" src="star-button.png" alt="the Star button"> on the GitHub page.</p>
 
 <!-- contributors -->
 <section class="tickers">
@@ -97,6 +111,8 @@
 <span>spm1d is developed and maintained by <a href="https://github.com/0todd0000">Todd Pataky</a> and contributors</span>
 <a href="https://github.com/0todd0000"><img src="0todd0000.png" alt="Todd Pataky on GitHub"></a>
 </footer>
+
+<p class="ai-note">Disclaimer: some components of spm1d.org software are developed with the help of AI tools.</p> <p class="ai-note">Every contributor is responsible for their own contributions. See <a href="ai/">AI use</a> and <a href="contributing/">Contributing</a>.</p>
 
 <br>
 
