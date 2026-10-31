@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>power1d.geom &#8212; power1d 0.1.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=0c472235" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=424f8d56" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="power1d.io" href="io.html" />
+    <link rel="prev" title="power1d.data" href="data.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="io.html" title="power1d.io"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="data.html" title="power1d.data"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.geom</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-power1d.geom">
+<span id="power1d-geom"></span><span id="label-api-geom"></span><h1>power1d.geom<a class="headerlink" href="#module-power1d.geom" title="Link to this heading">¶</a></h1>
+<p>One-dimensional (1D) continuum geometry primitives.</p>
+<p>The classes in this module represent a set of building blocks
+for constructing 1D baselines and signals.</p>
+<p>More complex 1D geometries can be constructed by combining multiple
+primitives through the standard operators: + - * / **</p>
+<p>The figure below provides an overview of all geometric primitive types. Details regarding reach are listed below.</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/c243b33dfe9b0490d893641ab178ff53/all_geom.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/3eedd58a46ba96545315c673779a522b/all_geom.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/2f447540edc72f67e2668035436d8e0c/all_geom.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f9eb25b3814dd3165ac55b3a11d39d5b/all_geom.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/all_geom.png" class="plot-directive" src="../_images/all_geom.png" />
+</figure>
+<section id="from-array">
+<span id="label-api-geom-from-array"></span><h2>from_array<a class="headerlink" href="#from-array" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.from_array">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.from_array" title="Link to this definition">¶</a></dt>
+<dd><p>Create Continuum1D geometry object(s) from a 1D or 2D array.</p>
+<p>Arguments:</p>
+<p><em>x</em> —- 1- or 2-dimensional numpy array</p>
+<p>Outputs:</p>
+<p><em>obj</em> —- a Continuum1D object</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">x</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span> <span class="mi">101</span> <span class="p">)</span>
+<span class="n">obj</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span> <span class="c1"># Continuum1D object</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">x</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">101</span> <span class="p">)</span>
+<span class="n">objs</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span> <span class="c1"># list of Continuum1D objects</span>
+<span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>  <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objs</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/bcab430db3cfc747a212ab4e687557b1/geom-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/620fdce437a386f94674b9e5c59f67d5/geom-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6eade68a4d58652f73b61b573540b0aa/geom-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/959cc2fe3471054805aef15469c32e13/geom-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-1.png" class="plot-directive" src="../_images/geom-1.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="from-file">
+<span id="label-api-geom-from-file"></span><h2>from_file<a class="headerlink" href="#from-file" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.from_file">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.from_file" title="Link to this definition">¶</a></dt>
+<dd><p>Create Continuum1D geometry object(s) from a CSV file.</p>
+<p>Only CSV files are currently supported.</p>
+<p>1D arrays can be saved as either a single row or a
+single column in a CSV file.</p>
+<p>2D arrays must be saved with shape (nrow,ncol) where
+nrow is the number of 1D arrays and each row will be
+converted to a Continuum1D object</p>
+<p>Arguments:</p>
+<p><em>fpath</em> —- full path to a CSV file</p>
+<p>Outputs:</p>
+<p><em>obj</em> —- a Continuum1D object</p>
+</dd></dl>
+
+</section>
+<section id="continuum1d">
+<h2>Continuum1D<a class="headerlink" href="#continuum1d" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.Continuum1D">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Continuum1D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Continuum1D" title="Link to this definition">¶</a></dt>
+<dd><p>Manually defined one-dimensional continuum geometry.</p>
+<p>Arguments:</p>
+<p><em>value</em> —- one-dimensional numpy array</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span> <span class="mi">101</span> <span class="p">)</span>
+<span class="n">obj</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Continuum1D</span><span class="p">(</span> <span class="n">value</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/0c9964e4248708edd9fa5eeeb48fb061/geom-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/4ced6328f7d28fd78a897495680b0a26/geom-2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/37ac4d7af392590bb46027f7252b4631/geom-2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6f412933db8c083a347e975b87491ea8/geom-2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-2.png" class="plot-directive" src="../_images/geom-2.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="constant">
+<h2>Constant<a class="headerlink" href="#constant" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.Constant">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Constant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Constant" title="Link to this definition">¶</a></dt>
+<dd><p>Constant value continuum with amplitude <em>amp</em>.</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>amp</em> —- continuum value (float or int) (default 0)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">1.3</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/14c7bb21d1d1c13f64c1d645d0e55f13/geom-3.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/bf85c0b3b6fd28f8970bcfebffa96db8/geom-3.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/462b4ce8d9d890dc2f3e2b3bd0c75a13/geom-3.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/d3afae692eed9ec1f50cebbb8ad60fbf/geom-3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-3.png" class="plot-directive" src="../_images/geom-3.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="exponential">
+<h2>Exponential<a class="headerlink" href="#exponential" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.Exponential">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Exponential</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Exponential" title="Link to this definition">¶</a></dt>
+<dd><p>Exponentially increasing (or decreasing) continuum</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>x0</em> —- value at starting continuum point (float or int) (default 0)</p>
+<p><em>x1</em> —- value at ending continuum point (float or int) (default 1)</p>
+<p><em>rate</em> —- rate of exponential increase (float or int) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Exponential</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">3.6</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">2.8</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/2cd048189be95544ee120e5a671d577a/geom-4.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/07104d2989d8dba4ffa77a9a7f3c3ad8/geom-4.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/0bc9cd4789766011c29caff917e0845d/geom-4.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/62cadc025b1fe6063b0e0feef988a2ec/geom-4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-4.png" class="plot-directive" src="../_images/geom-4.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="exponentialsaw">
+<h2>ExponentialSaw<a class="headerlink" href="#exponentialsaw" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.ExponentialSaw">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">ExponentialSaw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">70</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.ExponentialSaw" title="Link to this definition">¶</a></dt>
+<dd><p>Exponentially increasing (or decreasing) continuum with a saw cutoff</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>x0</em> —- value at starting continuum point (float or int) (default 0)</p>
+<p><em>x1</em> —- value at ending continuum point (float or int) (default 1)</p>
+<p><em>rate</em> —- rate of exponential increase (float or int) (default 1)</p>
+<p><em>cutoff</em> —- continuum point at which the continuum returns to <em>x0</em> (int) (default 70)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">ExponentialSaw</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">3.6</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">2.8</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="mi">85</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/8815da4f21cb911a621e30d129dc23ea/geom-5.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/357d916e7807e4108acf957df49d81c9/geom-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/296ecc86f7cbdf1d5c24d6b2b7625029/geom-5.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/03c4528b7c6908eb9933e97ddb725944/geom-5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-5.png" class="plot-directive" src="../_images/geom-5.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="gaussianpulse">
+<h2>GaussianPulse<a class="headerlink" href="#gaussianpulse" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.GaussianPulse">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">GaussianPulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.GaussianPulse" title="Link to this definition">¶</a></dt>
+<dd><p>A Gaussian pulse at a particular continuum location.</p>
+<p>NOTE: one of <em>fwhm</em> and <em>sigma</em> must be specified, and the other must be None.</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q</em> —- pulse center (int) (default 50)</p>
+<p><em>fwhm</em> —- pulse’s full-width-at-half-maximum (float or int) (default None)</p>
+<p><em>sigma</em> —- pulse’s standard deviation (float or int) (default None)</p>
+<p><em>amp</em> —- pulse amplitude</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/480feaf9fb033b0bfac4c2cf2e8031a0/geom-6.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e63ad97937389f3f32d614cf588005bc/geom-6.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/de9acdabd92ec2b37b8b643cefe20299/geom-6.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/a33d3604dc75ca3066c7b1b575edbead/geom-6.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-6.png" class="plot-directive" src="../_images/geom-6.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="linear">
+<h2>Linear<a class="headerlink" href="#linear" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.Linear">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Linear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slope</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Linear" title="Link to this definition">¶</a></dt>
+<dd><p>Linearly increasing (or decreasing) continuum</p>
+<p>NOTE: one of <em>x1</em> and <em>slope</em> must be specified, and the other must be None.</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>x0</em> —- value at starting continuum point (float or int) (default 0)</p>
+<p><em>x1</em> —- value at ending continuum point (float or int) (default None)</p>
+<p><em>slope</em> —- rate of linear increase (float or int) (default None)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">x1</span><span class="o">=-</span><span class="mf">4.5</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/2a1f8eae358e2a0f8d0c38354e3d8d21/geom-7.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/bbd7330dc59b83a444253328f5a6ad3e/geom-7.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/28530785233e1233e2013d15df72de36/geom-7.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/58ad22791d8209b135a8c9e8b3a1fd05/geom-7.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-7.png" class="plot-directive" src="../_images/geom-7.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="null">
+<h2>Null<a class="headerlink" href="#null" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.Null">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Null</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Null" title="Link to this definition">¶</a></dt>
+<dd><p>Null continuum.  This is equivalent to a constant continuum with amp=0</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Null</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/1898a2448cd47588f5424e3ce047bdfe/geom-8.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b0cd4a54b9f05a2fec3b9d823395924b/geom-8.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/237cb1a0ac535e70e80099de40670087/geom-8.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/d80300796a039a13c8ddfb492e83fc90/geom-8.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-8.png" class="plot-directive" src="../_images/geom-8.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="sawpulse">
+<h2>SawPulse<a class="headerlink" href="#sawpulse" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.SawPulse">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SawPulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SawPulse" title="Link to this definition">¶</a></dt>
+<dd><p>Linearly increasing (or decreasing) continuum, cut-off at a particular point</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q0</em> —- continuum point at which the saw starts (int) (default 50)</p>
+<p><em>q1</em> —- continuum point at which the saw end (int) (default 75)</p>
+<p><em>x0</em> —- value at start point (float or int) (default 0)</p>
+<p><em>x1</em> —- value at end point (float or int) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">SawPulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">x0</span><span class="o">=-</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">4.5</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/ece22a404655387d1032ef6ae9a091e3/geom-9.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ce92e4aad6670ae349620791548f861f/geom-9.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/54635477d91b08e5aafe7c08cf746ac5/geom-9.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/af0269060fc2a39fe0d5fb11da9821c9/geom-9.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-9.png" class="plot-directive" src="../_images/geom-9.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="sawtooth">
+<h2>SawTooth<a class="headerlink" href="#sawtooth" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.SawTooth">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SawTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SawTooth" title="Link to this definition">¶</a></dt>
+<dd><p>Repeating saw pattern.</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q0</em> —- continuum point at which the saw starts (int) (default 50)</p>
+<p><em>q1</em> —- continuum point at which the saw ends (int) (default 75)</p>
+<p><em>x0</em> —- value at start point (float or int) (default 0)</p>
+<p><em>x1</em> —- value at end point (float or int) (default 1)</p>
+<p><em>dq</em> —- inter-tooth distance (int) (default 0)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">SawTooth</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">dq</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/440f2ee645341dd6cb2be477f123f870/geom-10.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ee6e708709884122798e63df64f7d787/geom-10.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ece0ca26510312e7d36a7fe2582f9d8f/geom-10.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/022036518474b514bca02d1966ca8d93/geom-10.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-10.png" class="plot-directive" src="../_images/geom-10.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="sigmoid">
+<h2>Sigmoid<a class="headerlink" href="#sigmoid" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.Sigmoid">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Sigmoid" title="Link to this definition">¶</a></dt>
+<dd><p>Sigmoidal step pulse</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q0</em> —- continuum point at which the step starts (int) (default 50)</p>
+<p><em>q1</em> —- continuum point at which the step ends (int) (default 75)</p>
+<p><em>x0</em> —- value at start point (float or int) (default 0)</p>
+<p><em>x1</em> —- value at end point (float or int) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">0.9</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/8b972c2889c389a05980421f0c3e2a16/geom-11.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/4645cf84a36d6f1092f5a3b6ee4ba456/geom-11.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/47ceb3b592740688cfe4dc9b1bc5f679/geom-11.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/7d5dde100cfe6743d2f251786eb7cd5d/geom-11.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-11.png" class="plot-directive" src="../_images/geom-11.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="sinusoid">
+<h2>Sinusoid<a class="headerlink" href="#sinusoid" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.Sinusoid">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">Sinusoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hz</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.Sinusoid" title="Link to this definition">¶</a></dt>
+<dd><p>Repeating sinusoidal wave</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q0</em> —- continuum point at which phase is zero (int) (default 0)</p>
+<p><em>amp</em> —- amplitude (float or int) (default 1)</p>
+<p><em>hz</em> —- frequency relative to continuum size (float or int) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Sinusoid</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">hz</span><span class="o">=</span><span class="mi">2</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/02c7806ea65c13bb10630fcd41f7bd6e/geom-12.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/db0f4be945bb7683d227ef8f8c3b92d8/geom-12.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/69a40b5aca9e30d605a79e87eb0fbfb7/geom-12.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/5024b159f00c454ea9208a5c1ebda101/geom-12.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-12.png" class="plot-directive" src="../_images/geom-12.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="squarepulse">
+<h2>SquarePulse<a class="headerlink" href="#squarepulse" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.SquarePulse">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SquarePulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SquarePulse" title="Link to this definition">¶</a></dt>
+<dd><p>Square pulse</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q0</em> —- continuum point at which pulse starts (int) (default 50)</p>
+<p><em>q1</em> —- continuum point at which pulse ends (int) (default 75)</p>
+<p><em>x0</em> —- starting value (int or float) (default 0)</p>
+<p><em>x1</em> —- pulse height (int or float) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">SquarePulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">2.5</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/47c52e86ef5190e792723a35dac50058/geom-13.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/31306a68961a95873f40803cc329d930/geom-13.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/addb8b606a79c1e3ff1b4f1e56e3ffea/geom-13.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f5b6f6f7f653a83c761a003d255d4e4f/geom-13.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-13.png" class="plot-directive" src="../_images/geom-13.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="squaretooth">
+<h2>SquareTooth<a class="headerlink" href="#squaretooth" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.SquareTooth">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">SquareTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.SquareTooth" title="Link to this definition">¶</a></dt>
+<dd><p>Repeating square pulses</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q0</em> —- continuum point at which pulse starts (int) (default 10)</p>
+<p><em>q1</em> —- continuum point at which pulse ends (int) (default 25)</p>
+<p><em>x0</em> —- starting value (int or float) (default 0)</p>
+<p><em>x1</em> —- pulse height (int or float) (default 1)</p>
+<p><em>dq</em> —- inter-tooth distance (int) (default 5)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">SquareTooth</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">dq</span><span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/053817f31150beb1dff48b50116da231/geom-14.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/050013301ab58facfe7fbd06a1560e36/geom-14.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/d91762494fac32c3b93bde4ac732bdd2/geom-14.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/fb9a885565b41cb0dce091f7662eab3d/geom-14.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-14.png" class="plot-directive" src="../_images/geom-14.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="trianglepulse">
+<h2>TrianglePulse<a class="headerlink" href="#trianglepulse" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.TrianglePulse">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">TrianglePulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.TrianglePulse" title="Link to this definition">¶</a></dt>
+<dd><p>Triangular pulse</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q0</em> —- continuum point at which pulse starts (int) (default 50)</p>
+<p><em>q1</em> —- continuum point at which pulse ends (int) (default 75)</p>
+<p><em>x0</em> —- starting value (int or float) (default 0)</p>
+<p><em>x1</em> —- pulse height (int or float) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">TrianglePulse</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">2.5</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/8ecd8fb62444261bba76a59b5bf515ca/geom-15.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/09bc4a7722a2b43bd90be5d01484459b/geom-15.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/c27633b90ea0d79e230ee5a88d7671f5/geom-15.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/05f34d8cfd2a527b6d203946364e69f7/geom-15.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-15.png" class="plot-directive" src="../_images/geom-15.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="triangletooth">
+<h2>TriangleTooth<a class="headerlink" href="#triangletooth" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.geom.TriangleTooth">
+<span class="sig-prename descclassname"><span class="pre">power1d.geom.</span></span><span class="sig-name descname"><span class="pre">TriangleTooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.geom.TriangleTooth" title="Link to this definition">¶</a></dt>
+<dd><p>Repeating triangular pulses</p>
+<p>Keyword arguments:</p>
+<p><em>Q</em> —- continuum size (int) (default: 101)</p>
+<p><em>q0</em> —- continuum point at which pulse starts (int) (default 10)</p>
+<p><em>q1</em> —- continuum point at which pulse ends (int) (default 25)</p>
+<p><em>x0</em> —- starting value (int or float) (default 0)</p>
+<p><em>x1</em> —- pulse height (int or float) (default 1)</p>
+<p><em>dq</em> —- inter-tooth distance (int) (default 5)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">obj</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">TriangleTooth</span><span class="p">(</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">q0</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">dq</span><span class="o">=</span><span class="mi">15</span> <span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/ca43e1805f105a08c26640aa2be0bb8b/geom-16.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/dbd0e07e6c2fdb05ccb8397f1b2e30ab/geom-16.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/07e8f0b22439961f7c4a9e50c631cd17/geom-16.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/7c1c70ad271258c16d64be52f430c3ab/geom-16.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/geom-16.png" class="plot-directive" src="../_images/geom-16.png" />
+</figure>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">power1d.geom</a><ul>
+<li><a class="reference internal" href="#from-array">from_array</a><ul>
+<li><a class="reference internal" href="#power1d.geom.from_array"><code class="docutils literal notranslate"><span class="pre">from_array()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#from-file">from_file</a><ul>
+<li><a class="reference internal" href="#power1d.geom.from_file"><code class="docutils literal notranslate"><span class="pre">from_file()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#continuum1d">Continuum1D</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Continuum1D"><code class="docutils literal notranslate"><span class="pre">Continuum1D()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constant">Constant</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Constant"><code class="docutils literal notranslate"><span class="pre">Constant()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exponential">Exponential</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Exponential"><code class="docutils literal notranslate"><span class="pre">Exponential()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exponentialsaw">ExponentialSaw</a><ul>
+<li><a class="reference internal" href="#power1d.geom.ExponentialSaw"><code class="docutils literal notranslate"><span class="pre">ExponentialSaw()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gaussianpulse">GaussianPulse</a><ul>
+<li><a class="reference internal" href="#power1d.geom.GaussianPulse"><code class="docutils literal notranslate"><span class="pre">GaussianPulse()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linear">Linear</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Linear"><code class="docutils literal notranslate"><span class="pre">Linear()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#null">Null</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Null"><code class="docutils literal notranslate"><span class="pre">Null()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sawpulse">SawPulse</a><ul>
+<li><a class="reference internal" href="#power1d.geom.SawPulse"><code class="docutils literal notranslate"><span class="pre">SawPulse()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sawtooth">SawTooth</a><ul>
+<li><a class="reference internal" href="#power1d.geom.SawTooth"><code class="docutils literal notranslate"><span class="pre">SawTooth()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sigmoid">Sigmoid</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Sigmoid"><code class="docutils literal notranslate"><span class="pre">Sigmoid()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sinusoid">Sinusoid</a><ul>
+<li><a class="reference internal" href="#power1d.geom.Sinusoid"><code class="docutils literal notranslate"><span class="pre">Sinusoid()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#squarepulse">SquarePulse</a><ul>
+<li><a class="reference internal" href="#power1d.geom.SquarePulse"><code class="docutils literal notranslate"><span class="pre">SquarePulse()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#squaretooth">SquareTooth</a><ul>
+<li><a class="reference internal" href="#power1d.geom.SquareTooth"><code class="docutils literal notranslate"><span class="pre">SquareTooth()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#trianglepulse">TrianglePulse</a><ul>
+<li><a class="reference internal" href="#power1d.geom.TrianglePulse"><code class="docutils literal notranslate"><span class="pre">TrianglePulse()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#triangletooth">TriangleTooth</a><ul>
+<li><a class="reference internal" href="#power1d.geom.TriangleTooth"><code class="docutils literal notranslate"><span class="pre">TriangleTooth()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="data.html"
+                          title="previous chapter">power1d.data</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="io.html"
+                          title="next chapter">power1d.io</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/API/geom.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="io.html" title="power1d.io"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="data.html" title="power1d.data"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.geom</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,344 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Statistical testing of 1D continua &#8212; spm1d 0.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="One- vs. two-tailed inference" href="twotailed.html" />
+    <link rel="prev" title="Random field theory" href="rft.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+<script data-goatcounter="https://spm1d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+                <li><a href="../../Support.html">Support</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features">New Features</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Support.html">Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Statistical testing of 1D continua</a><ul>
+<li><a class="reference internal" href="#quick-overview">Quick overview</a></li>
+<li><a class="reference internal" href="#dataset">Dataset</a></li>
+<li><a class="reference internal" href="#test-statistic-computation">Test statistic computation</a></li>
+<li><a class="reference internal" href="#statistical-inference">Statistical inference</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">Statistical testing of 1D continua</a><ul>
+<li><a class="reference internal" href="#quick-overview">Quick overview</a></li>
+<li><a class="reference internal" href="#dataset">Dataset</a></li>
+<li><a class="reference internal" href="#test-statistic-computation">Test statistic computation</a></li>
+<li><a class="reference internal" href="#statistical-inference">Statistical inference</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="rft.html" title="Previous Chapter: Random field theory"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Random field theory</span>
+    </a>
+  </li>
+  <li>
+    <a href="twotailed.html" title="Next Chapter: One- vs. two-tailed inference"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">One- vs. two-... &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <section id="statistical-testing-of-1d-continua">
+<span id="label-theory-statisticaltest"></span><h1>Statistical testing of 1D continua<a class="headerlink" href="#statistical-testing-of-1d-continua" title="Link to this heading">¶</a></h1>
+<p>If your experimental data can be described as “1D continua” (or “1D fields” or “1D trajectories”) then Statistical Parametric Mapping (<strong>SPM</strong>) may be an appropriate statistical methodology for you to consider.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SPM conducts statistical testing <strong>at the continuum level</strong>, in a conceptually simple manner. For 0D (univariate) datasets, which are the focus of most basic statistics textbooks, statistical inference stems from a model of randomness, usually the Gaussian distribution. The goal is to quantify the probability that random data would exceed a particular test statistic value (like <em>t</em> = 2.5 or <em>F</em> = 10.1). For 1D datasets, <strong>SPM</strong>-based statistical testing is conceptually identical: the goal is to quantify the probability that smooth, random 1D continua would produce a test statistic continuum whose maximum exceeds a particular test statistic value.</p>
+</div>
+<p>In <strong>spm1d</strong> statistical testing is conducted in two-stages:</p>
+<ol class="arabic simple">
+<li><p>Test statistic computation</p></li>
+<li><p>Statistical inference.</p></li>
+</ol>
+<p>This basic procedure is identical for all tests, and all test statistics.</p>
+<p>For simplicity this document will consider just one dataset and one test.</p>
+<section id="quick-overview">
+<span id="label-theory-statisticaltest-overview"></span><h2>Quick overview<a class="headerlink" href="#quick-overview" title="Link to this heading">¶</a></h2>
+<p>The following commands execute a complete one-sample t test for a set of randomly-generated 1D continua.  We shall consider these commands in more detail below.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>                 <span class="c1">#import the numpy module (here to generate random data)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span>      <span class="c1">#import the pyplot module (to visualize data)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">spm1d</span>                       <span class="c1">#import the spm1d module (to conduct statistical tests and visualize 1D continua)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                  <span class="c1">#seed the random number generator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span><span class="mf">0.21</span>  <span class="c1">#generate 10 separate random 1D continua</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1">#smooth the continua</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>           <span class="c1">#conduct a one-sample t test, producing a t test statistic continuum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#conduct one-tailed inference at alpha=5%</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>                          <span class="c1">#visualize the results</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot_threshold_label</span><span class="p">()</span>          <span class="c1">#label the critical threshold</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">()</span>                 <span class="c1">#plot p values</span>
+</pre></div>
+</div>
+<p>The results are depicted in the figure below.</p>
+<ul class="simple">
+<li><p>The thick black line depicts the test statistic continuum, which in this case is a <em>t</em> continuum, or “SPM{t}”.</p></li>
+<li><p>The red hashed line depicts the critical threshold at <em>alpha</em> = 5%. From a classical hypothesis testing perspective, the null hypothesis is rejected at <em>alpha</em> if the SPM{t} exceeds this threshold.</p></li>
+<li><p>The probability (<em>p</em>) value indicates the probability that smooth, random continua would produce a supra-threshold cluster as broad as the observed cluster. Here “smooth” means <strong>the same smoothness as the residual continua</strong>, and “broad” means <strong>the proportion of the continuum spanned by a suprathreshold cluster</strong>.</p></li>
+</ul>
+<p>This example is considered in extended detail below.</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/393d08102334dc39580ad3f5264cbcac/tests1d-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/aaa03ffde7273527d8a19c6585d0c342/tests1d-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/4cb11ea9a5e1a688bf5d7dae1e2f5358/tests1d-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/e11fc7699bd499b4ba6d61c5c4bde075/tests1d-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-1.png" class="plot-directive" src="../../_images/tests1d-1.png" />
+</figure>
+</section>
+<section id="dataset">
+<span id="label-theory-statisticaltest-dataset"></span><h2>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#label-theory-statisticaltest-overview"><span class="std std-ref">first three lines</span></a> generate smooth, random 1D continua:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span><span class="mf">0.21</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">smooth</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After executing these commands <em>Y</em> will be a (10 x 100) array containing ten separate continua, each of which has been sampled at 100 separate nodes.</p>
+<p>The data can be visualized as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../../_downloads/c7a31e0d4fb0e270dce5c07d1ce7d1f2/tests1d-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/243c1fb417bb19fc9cf608898c45395f/tests1d-2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/9616d5022b245cebbfd4c28c77bbaccc/tests1d-2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/b04e86ae33eec991287257618c1814ad/tests1d-2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-2.png" class="plot-directive" src="../../_images/tests1d-2.png" />
+</figure>
+<p>Mean continua can be visualized along with standard deviation (SD) clouds like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_mean_sd</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'b:'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../../_downloads/92f00270d3b4bb11a2bac4385cbf11f9/tests1d-3.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/bf34185283a7fc705aca4653a080c963/tests1d-3.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/9ed7f12be9bf705e6188262a6f80a23f/tests1d-3.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/020b38715c8e581bf3fa96a07ac0d7fa/tests1d-3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-3.png" class="plot-directive" src="../../_images/tests1d-3.png" />
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although the mean minus SD exceeds zero in the vicinity of <em>q</em> = 18%, implying that this is the strongest signal, this observation has no probabilistic meaning.</p>
+<p>For objective reporting we need to quantify the probability that random data would produce a signal as large or larger than this signal, <strong>given the variability</strong>.</p>
+<p>However, before computing that probability we need to compute a test statistic, which has known probabilistic behavior in an infinite number of experiments.</p>
+</div>
+<p><a class="reference internal" href="#label-theory-statisticaltest"><span class="std std-ref">back to top</span></a></p>
+</section>
+<section id="test-statistic-computation">
+<span id="label-theory-statisticaltest-teststat"></span><h2>Test statistic computation<a class="headerlink" href="#test-statistic-computation" title="Link to this heading">¶</a></h2>
+<p>In <strong>spm1d</strong> you can compute the test statistic for the one-sample t test as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The result <em>t</em> is a 1D test statistic continuum, or equivalently a “Statistical Parametric Map” (SPM), denoted “<strong>SPM{t}</strong>”.
+It can be visualized as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../../_downloads/ee377378225e4d50415d9ee6c24eab4b/tests1d-4.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/b673e4f9189b11fef66f529140f440ec/tests1d-4.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/b961b7d6c5cb7bb59552a9f169af6d01/tests1d-4.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/f354db926b5cd572dce63b6e930aedff/tests1d-4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-4.png" class="plot-directive" src="../../_images/tests1d-4.png" />
+</figure>
+<p>In addition to visualizing the results, as in the figure above, you can also probe SPM attributes as described in <a class="reference internal" href="../Stats1D/outputs.html#label-examples-statsoutputs"><span class="std std-ref">Test outputs</span></a>.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Do not misinterpret test statistic estimation at 100 nodes as equivalent to having conducted 100 separate statistical tests. Such an interpretation would be incorrect on two counts. First, estimating the test statistic at multiple nodes, just like estimating the mean at multiple nodes, results in just one continuum estimate. Thus the number of nodes is irrelevant; there will always be just one test statistic continuum. Second, computing the test statistic does not constitute statistical testing. Indeed, <strong>at this point we have conducted precisely zero statistical tests</strong>. A statistical test is conducted only when we quantify the probability that random data would produce particular features of our test statistic. If the test statistic is a 0D scalar (e.g. <em>t</em> = 3.1), then the goal is to quantify the probability that random data would produce a <em>t</em> value as large or larger than the observed value. If the test statistic is a 1D continuum, then the goal is to quantify the probability that random continua would produce particular geometric features in test statistic continua, like maximum continuum height.</p>
+</div>
+<p><a class="reference internal" href="#label-theory-statisticaltest"><span class="std std-ref">back to top</span></a></p>
+</section>
+<section id="statistical-inference">
+<span id="label-theory-statisticaltest-inference"></span><h2>Statistical inference<a class="headerlink" href="#statistical-inference" title="Link to this heading">¶</a></h2>
+<p>In <strong>spm1d</strong> statistical inference is conducted separately from test statistic computation as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>  <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">two_tailed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>By default <strong>spm1d</strong> conducts two-tailed inference. To force one-tailed inference set the keyword <em>two_tailed</em> to <em>False</em>, as indicated above. A discussion of one- vs. two-tailed inference can be found here: <a class="reference internal" href="twotailed.html#label-theory-onetwotailed"><span class="std std-ref">One- vs. two-tailed inference</span></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We have set an <em>a priori</em> Type I error rate of <em>alpha</em> = 5%. If the data are 0D scalars, and if we have conducted a t test, then <em>alpha</em> maps directly to a single critical <em>t</em> value, which we shall denote <em>t*</em>. If the observed <em>t</em> value exceeds <em>t*</em>, then from a classical hypothesis testing perspective the test is said to be significant at a Type I error rate of <em>alpha</em>. Similarly, <em>alpha</em> also maps to a generally different threshold <em>t*</em> when the data are 1D continua. In the 1D case, <em>alpha</em> pertains to the maximum <em>t</em> value across the entire continuum, and ensures that random continua reach <em>t*</em> with a probability of <em>alpha</em>.</p>
+</div>
+<p>The inference SPM{t} can be visualized using:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot_threshold_label</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.3</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p>The <em>size</em> keyword argument specifies the font size for the <em>p</em> value text, and the <em>offsets</em> keyword argument specifies where to position the text relative to the cluster centroid.</p>
+<p>Alternatively you can plot <em>p</em> values manually using <strong>pyplot.text</strong>, like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="s1">'p = </span><span class="si">%.3f</span><span class="s1">'</span> <span class="o">%</span><span class="n">ti</span><span class="o">.</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also probe inference results interactively as described in <a class="reference internal" href="../Stats1D/outputs.html#label-spmobject-details"><span class="std std-ref">Inference SPMs</span></a>.</p>
+<p>The resulting figure (below) depicts the raw SPM{t} along with the <em>alpha</em>-based critical threshold <em>t*</em> and the probability value associated with the suprathreshold cluster.</p>
+<p>(<a class="reference download internal" download="" href="../../_downloads/e09d784f8dce96530d2fc493d903daa5/tests1d-5.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/6135ee1174e814d3a54ac020e71d2098/tests1d-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/35845fbec5120af47cb102ed7be43834/tests1d-5.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/61a8e05bc571f3ce78495bda6fcecf2d/tests1d-5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../_images/tests1d-5.png" class="plot-directive" src="../../_images/tests1d-5.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The probability that smooth random continua will produce an SPM{t} that reaches <em>t*</em> is precisely <em>alpha</em>. If the test statistic continuum just touches the critical threshold, then by definition the <em>p</em> value is <em>alpha</em>. As the test statistic continuum traverses beyond the critical threshold, as in the example above, the <em>p</em> value gets progressively smaller. The <em>p</em> value specifies the probability that smooth random fields would produce a suprathreshold cluster as broad or broader than the observed cluster, where “broad” refers to the width of the cluster relative to the width of the whole continuum.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Do not misinterpret <em>alpha</em>, <em>t*</em> or <em>p</em> values as descriptive elements of a particular dataset. Instead they describe random data behavior.</p>
+</div>
+</section>
+</section>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2026, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

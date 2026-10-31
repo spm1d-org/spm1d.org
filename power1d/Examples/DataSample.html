@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Data sample modeling &#8212; power1d 0.1.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=0c472235" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=424f8d56" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Power analysis" href="PowerAnalysis.html" />
+    <link rel="prev" title="Examples" href="../Examples.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="PowerAnalysis.html" title="Power analysis"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../Examples.html" title="Examples"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../Examples.html" accesskey="U">Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Data sample modeling</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="data-sample-modeling">
+<span id="label-examples-datasample"></span><h1>Data sample modeling<a class="headerlink" href="#data-sample-modeling" title="Link to this heading">¶</a></h1>
+<p>Consider the Canadian temperature dataset in the figure below.  These data are from
+<a class="reference internal" href="../References.html#label-literature"><span class="std std-ref">Ramsay &amp; Silverman (2005)</span></a>
+and are available for download here:</p>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab/">http://www.psych.mcgill.ca/misc/fda/downloads/FDAfuns/Matlab/</a></div>
+<div class="line">The data are in <strong>fdaMatlab.zip</strong> in the <strong>/examples/weather</strong> folder.</div>
+</div>
+<p id="label-weatherdata">(<a class="reference download internal" download="" href="../_downloads/5293c0da69d7e0896a07f7b10deaf832/DataSample-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e72fcff8b46cfa99defaa2d4dd1a4ef4/DataSample-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/721ecd94087f16413e559097c5cd26f8/DataSample-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f8bf7d78e1d053ba65c6d5d47967ee79/DataSample-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-1.png" class="plot-directive" src="../_images/DataSample-1.png" />
+</figure>
+<p>The first step of power analysis is to create a model the data that can be used to generate real
+numerical data samples. Later those data samples will be iteratively generated over a large number
+of iterations in order to numerically accumulate probability distributions associated with the model.</p>
+<p>In <strong>power1d</strong> there are four steps to creating a data sample model:</p>
+<ol class="arabic simple">
+<li><p>Create baseline geometry.</p></li>
+<li><p>Create signal geometry.</p></li>
+<li><p>Create a noise model.</p></li>
+<li><p>Combine 1–3 in a DataSample model.</p></li>
+</ol>
+<p>The first step is to create “baseline” one-dimensional (1D) geometry.
+If one has experimental data like those depicted above,
+it is easy to generate that baseline as a <strong>power1d.geom.Continuum1D</strong> as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">data</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()</span>  <span class="c1"># load data</span>
+<span class="n">y</span>        <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'Continental'</span><span class="p">]</span>     <span class="c1"># extract one region</span>
+<span class="n">m</span>        <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>        <span class="c1"># mean continuum</span>
+
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Continuum1D</span><span class="p">(</span> <span class="n">m</span> <span class="p">)</span>
+<span class="n">baseline</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/3dc266be9422cd89c7487767851848eb/DataSample-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/c2517939e57985781c465580b22d68b4/DataSample-2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/1d1876b43deed342a61054be038ebc3e/DataSample-2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6099e6239cbb0238b47748eaba873cbd/DataSample-2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-2.png" class="plot-directive" src="../_images/DataSample-2.png" />
+</figure>
+<p>If we didn’t have experimental data we could approximate the baseline using the
+geometric models in <a class="reference internal" href="../API/geom.html#label-api-geom"><span class="std std-ref">power1d.geom</span></a>. In this case one possibility for
+modeling the baseline is to subtract a Constant value from a GaussianPulse
+as indicated below.  This appears to create a reasonable approximation to
+the experimental data.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">data</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()</span>  <span class="c1"># load data</span>
+<span class="n">y</span>        <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'Continental'</span><span class="p">]</span>     <span class="c1"># extract one region</span>
+<span class="n">m</span>        <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>        <span class="c1"># mean continuum</span>
+
+<span class="c1"># approximate the experimental value using a Gaussian pulse:</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">365</span>  <span class="c1"># continuum size</span>
+<span class="n">g0</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">190</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">40</span> <span class="p">)</span>
+<span class="n">g1</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">23</span> <span class="p">)</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">g0</span> <span class="o">-</span> <span class="n">g1</span>  <span class="c1"># subtract the geometries</span>
+
+<span class="n">ax</span>       <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">m</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
+<span class="n">baseline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'g'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Model'</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/9caaedbd87d90298e58919c36bd79285/DataSample-3.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/da7207338e34b86b8accacddb93fc79b/DataSample-3.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/c6a1f6143537e076b9b776d9aef31a3a/DataSample-3.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/0109706cede52a578effce73187d93fb/DataSample-3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-3.png" class="plot-directive" src="../_images/DataSample-3.png" />
+</figure>
+<p>The second step is to create a signal that we wish to detect experimentally.
+Let’s say that we hope to detect a broad increase in temperature over the
+summer months with a maximum temperature increase of 5 deg. That could be
+modeled as a second Gaussian pulse like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">data</span>     <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()</span>  <span class="c1"># load data</span>
+<span class="n">y</span>        <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">'Continental'</span><span class="p">]</span>     <span class="c1"># extract one region</span>
+<span class="n">m</span>        <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>        <span class="c1"># mean continuum</span>
+
+<span class="c1"># approximate the experimental value using a Gaussian pulse:</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">365</span>  <span class="c1"># continuum size</span>
+<span class="n">g0</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">190</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">40</span> <span class="p">)</span>
+<span class="n">g1</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">23</span> <span class="p">)</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">g0</span> <span class="o">-</span> <span class="n">g1</span>  <span class="c1"># subtract the geometries</span>
+
+<span class="c1"># add a signal:</span>
+<span class="n">signal</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">100</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
+
+<span class="n">ax</span>       <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">m</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Experimental mean'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">)</span>
+<span class="n">baseline</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'g'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Model'</span> <span class="p">)</span>
+<span class="p">(</span><span class="n">baseline</span> <span class="o">+</span> <span class="n">signal</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Signal'</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/eda588300801b50dadec8e6a2804674a/DataSample-4.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/fec07b6535d0ea03f78474ee0da7255c/DataSample-4.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/1ef8c264e3a1b978f189e047998872eb/DataSample-4.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/701f715a086ba6af0347111aa16f7823/DataSample-4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-4.png" class="plot-directive" src="../_images/DataSample-4.png" />
+</figure>
+<p>The third step is to create a model of the noise we expect to observe
+experimentally.  From the <a class="reference internal" href="#label-weatherdata"><span class="std std-ref">weather data</span></a> above
+we can see at least two types of noise: a high-frequency day-to-day noise
+and lower-frequency noise across the different 1D observations. In
+<strong>power1d</strong> a variety of <a class="reference internal" href="../API/noise.html#label-api-noise"><span class="std std-ref">noise models</span></a> are available
+to model theses processes. Here let’s model the noise as a combination
+of uncorrelated Gaussian noise and SmoothGaussian noise:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>    <span class="c1"># sample size</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">365</span>  <span class="c1"># continuum size</span>
+<span class="n">noise0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="p">)</span>
+<span class="n">noise1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">,</span> <span class="n">fwhm</span> <span class="o">=</span> <span class="mi">70</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Additive</span><span class="p">(</span> <span class="n">noise0</span> <span class="p">,</span> <span class="n">noise1</span> <span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span>  <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span> <span class="kc">False</span> <span class="p">)</span>
+
+<span class="c1"># plot noise objects:</span>
+<span class="n">noise0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">noise1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+
+<span class="c1"># add panel labels:</span>
+<span class="n">labels</span>   <span class="o">=</span> <span class="s1">'Gaussian'</span><span class="p">,</span> <span class="s1">'SmoothGaussian'</span><span class="p">,</span> <span class="s1">'Additive'</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="p">,</span> <span class="n">labels</span> <span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">'w'</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/5f0d279629c96a6b440abda366e7b866/DataSample-5.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/0c08384811c758ccafd0f35670b7f16a/DataSample-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/de507d6aaaa5664a78dfbd7d4dcaffa3/DataSample-5.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/d93e3e470ebd73cd60d3b74e985ead5d/DataSample-5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-5.png" class="plot-directive" src="../_images/DataSample-5.png" />
+</figure>
+<p>Before we add that noise to our model let’s consider these noise models briefly.
+Each noise model has an attribute <em>value</em> which contains a  (J x Q) array
+representing the current state of the random noise. New random noise can
+be generated using the <em>random</em> method, and the noise values can be replicated
+using NumPy’s <strong>np.random.seed</strong> function as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">J</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span>  <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># (a) generate noise object:</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span><span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="c1"># (b) create new random data:</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="c1"># (c) reset noise to its original state:</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="c1"># add panel labels:</span>
+<span class="n">labels</span>   <span class="o">=</span> <span class="s1">'(a)  Original noise'</span><span class="p">,</span> <span class="s1">'(b)  New noise'</span><span class="p">,</span> <span class="s1">'(c)  Reset using np.random.seed'</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="p">,</span> <span class="n">labels</span> <span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">'w'</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/44966bc1abcf1ec6f31c1d3864a08413/DataSample-6.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/898d95e44b3c5dc59009bfd3bb8a8670/DataSample-6.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/927cc2c8ee36db008cb9ac39ba12baff/DataSample-6.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e79a253c6dbc496bd7614a4b3e15fc5b/DataSample-6.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-6.png" class="plot-directive" src="../_images/DataSample-6.png" />
+</figure>
+<p>This noise control is identical for all types of <a class="reference internal" href="../API/noise.html#label-api-noise"><span class="std std-ref">noise models</span></a>
+including compound types like the Additive model above.</p>
+<p>The fourth and final step is to combine our baseline, signal and noise objects
+into a DataSample object like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">J</span>        <span class="o">=</span> <span class="mi">8</span>    <span class="c1"># sample size</span>
+<span class="n">Q</span>        <span class="o">=</span> <span class="mi">365</span>  <span class="c1"># continuum size</span>
+
+<span class="c1"># construct baseline geometry:</span>
+<span class="n">g0</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">190</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">40</span> <span class="p">)</span>
+<span class="n">g1</span>       <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">23</span> <span class="p">)</span>
+<span class="n">baseline</span> <span class="o">=</span> <span class="n">g0</span> <span class="o">-</span> <span class="n">g1</span>  <span class="c1"># subtract the geometries</span>
+
+<span class="c1"># construct signal geometry:</span>
+<span class="n">signal</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">200</span> <span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">100</span> <span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
+
+<span class="c1"># construct noise model:</span>
+<span class="n">noise0</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="p">)</span>
+<span class="n">noise1</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span> <span class="p">,</span> <span class="n">Q</span> <span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mi">3</span> <span class="p">,</span> <span class="n">fwhm</span> <span class="o">=</span> <span class="mi">70</span> <span class="p">)</span>
+<span class="n">noise</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Additive</span><span class="p">(</span> <span class="n">noise0</span> <span class="p">,</span> <span class="n">noise1</span> <span class="p">)</span>
+
+<span class="c1"># create data sample model:</span>
+<span class="n">model</span>    <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DataSample</span><span class="p">(</span> <span class="n">baseline</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">noise</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="n">J</span> <span class="p">)</span>
+
+<span class="c1"># visualize</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span>  <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span> <span class="kc">False</span> <span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
+
+<span class="c1"># add panel labels:</span>
+<span class="n">labels</span>   <span class="o">=</span> <span class="s1">'(a)  Original model state'</span><span class="p">,</span> <span class="s1">'(b)  New state'</span><span class="p">,</span> <span class="s1">'(c)  Reset using np.random.seed'</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span> <span class="n">axs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span> <span class="p">,</span> <span class="n">labels</span> <span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">'w'</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/075ecae0464d11d73d0190ee79038382/DataSample-7.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/d46851c8c78229a2c6915af055ca2f29/DataSample-7.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/13ae9c0c3fa5eb8a03db48a987b0b543/DataSample-7.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/406cb72538185a4ebcb7aa552e309676/DataSample-7.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/DataSample-7.png" class="plot-directive" src="../_images/DataSample-7.png" />
+</figure>
+<p>In the figure above we see that, like the noise models, we can generate new data sample
+models using the <em>random</em> method and we can control the model’s random state using
+<strong>np.random.seed</strong>.</p>
+<p>This instantaneous state of a DataModel represents the type of data we expect to observe
+in a single experiment <strong>if</strong> the baseline, signal and noise models are all accurate.
+If they are accurate we can numerically generate a large number of experimental datasets
+as if we had conducted a large number of experiments. Moreover, and most importantly,
+we can compare one model to another. Specifically, by comparing a model with no (or Null)
+signal to one with a modeled (non-null) signal we can calculate the power with which
+we will be able to detect that signal given our noise model.</p>
+<p>This type of power analyis is described in <a class="reference internal" href="PowerAnalysis.html#label-examples-poweranalysis"><span class="std std-ref">the next section</span></a>.</p>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="../Examples.html"
+                          title="previous chapter">Examples</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="PowerAnalysis.html"
+                          title="next chapter">Power analysis</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Examples/DataSample.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="PowerAnalysis.html" title="Power analysis"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../Examples.html" title="Examples"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../Examples.html" >Examples</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Data sample modeling</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
+    </div>
+  </body>
+</html>

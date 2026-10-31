@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Test statistic field maxima &mdash; rft1d 0.2.0 documentation</title>
+  
+
+  
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/plot_directive.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/theme.css" type="text/css" />
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="rft1d 0.2.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Validation" href="../Validation.html"/>
+        <link rel="next" title="Conjugation analysis" href="Conjugation.html"/>
+        <link rel="prev" title="Cluster-level inference (Gaussian)" href="ClusterLevel.html"/> 
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div>
+		<!-- <a href="../../index.html"><img src="_static/rft1d.png" alt="rft1d.png"</a> -->
+		<!-- <img src="_static/rft1d.png" alt="rft1d.png"</img> -->
+		<img src="../../_static/rft1d.png" alt="rft1d.png"</img>
+      </div>
+
+
+      <div class="wy-side-nav-search">
+        <!-- <a href="../../index.html" class="fa fa-home"> rft1d</a> -->
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../../index.html" class="fa fa-home"> rft1d</a>
+		<!-- <img src="./rft1d.png" alt="rft1d.png"> -->
+		
+        
+            <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Download.html">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#automated-installation">Automated installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#source-code-download">Source code download</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#release-notes">Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#license-information">License information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Download.html#license-agreement-for-rft1d">License agreement for rft1d</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../Theory.html">RFT Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Theory.html#gaussian-random-fields">Gaussian random fields</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Theory.html#expected-field-maximum">Expected field maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Theory.html#upcrossings">Upcrossings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Theory.html#expected-upcrossing-geometry">Expected upcrossing geometry</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Basic.html">Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../BrokenFields.html">Broken fields</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../Validation.html">Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Application.html">Application</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Paper.html">Results from the paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List.html">Scripts (overview)</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../API.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../API/distributions.html">rft1d.distributions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/geom.html">rft1d.geom</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/prob.html">rft1d.prob</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../API/random.html">rft1d.random</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../References.html#on-the-web">On the web</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../References.html#software">Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../References.html#literature">Literature</a></li>
+</ul>
+</li>
+</ul>
+
+        
+		
+      </div>
+	  
+	  
+      <!-- <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <a href="../../index.html" class="fa fa-home"> rft1d</a>
+      </div> -->
+	  
+      <!-- <div class="wy-side-nav-search">
+        <a href="../../index.html" class="fa fa-home"> rft1d</a>
+		
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+      </div> -->
+	  
+	  
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">rft1d</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../Examples.html">Examples</a> &raquo;</li>
+      
+          <li><a href="../Validation.html">Validation</a> &raquo;</li>
+      
+    <li>Test statistic field maxima</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <!-- <a href="../../_sources/Examples/Validation/TestStatistic.rst.txt" rel="nofollow"> View page source</a> -->
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            
+  <section id="test-statistic-field-maxima">
+<h1>Test statistic field maxima<a class="headerlink" href="#test-statistic-field-maxima" title="Permalink to this heading">¶</a></h1>
+<p>The basic procedure for RFT validations is outlined in
+<a class="reference internal" href="../Basic.html#label-examples-validatingrftexpectations"><span class="std std-ref">Examples/Basic/Validating</span></a>.
+This section presents code details for validating the probability with which
+test statistic field maxima survive particular thresholds.</p>
+<blockquote>
+<div><p>See <strong>./rft1d/examples/val_max_1_onesample_t_1d.py</strong> and other “val_max*.py” scripts</p>
+</div></blockquote>
+<p>Validations for test statistic set-level and cluster-level inference are
+available in scripts titled <strong>./rft1d/examples/val_upx*.py</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To see details of test statistic computation click on the “Source code” links above each figure.</p>
+</div>
+<section id="univariate">
+<h2>Univariate<a class="headerlink" href="#univariate" title="Permalink to this heading">¶</a></h2>
+<section id="one-sample">
+<h3>One-sample<a class="headerlink" href="#one-sample" title="Permalink to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="../../_downloads/ae197a897bd6e90bf4364c464b12935c/val_max_1_onesample_t_1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/ac14136806ba0f25409b99a5ac754a72/val_max_1_onesample_t_1d.2x.png"><code class="xref download docutils literal notranslate"><span class="pre">2x.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/09082680720bd5d416c305e5d4a18a90/val_max_1_onesample_t_1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/b3e766501019c3dea605b4e45cd200ee/val_max_1_onesample_t_1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/c389bbcf5dd631998875e52ccd3231e9/val_max_1_onesample_t_1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Examples-Validation-val_max_1_onesample_t_1d.2x.png">
+<img alt="" class="plot-directive" src="../../_images/Examples-Validation-val_max_1_onesample_t_1d.png" srcset="../../_images/Examples-Validation-val_max_1_onesample_t_1d.png, ../../_images/Examples-Validation-val_max_1_onesample_t_1d.2x.png 2.00x" />
+</a>
+</figure>
+</section>
+<section id="two-sample">
+<h3>Two-sample<a class="headerlink" href="#two-sample" title="Permalink to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="../../_downloads/a8cce199ef4ca2acba5b1790d970f915/val_max_2_twosample_t_1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/b57ff894cfd80950a25839f93d8e1782/val_max_2_twosample_t_1d.2x.png"><code class="xref download docutils literal notranslate"><span class="pre">2x.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/3ba8e6f3e9eb03c226fa5e9a576a7c84/val_max_2_twosample_t_1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/2804e37adeda1c86f769f917ff914f8b/val_max_2_twosample_t_1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/b866b51891897c58daaf3b708adddb90/val_max_2_twosample_t_1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Examples-Validation-val_max_2_twosample_t_1d.2x.png">
+<img alt="" class="plot-directive" src="../../_images/Examples-Validation-val_max_2_twosample_t_1d.png" srcset="../../_images/Examples-Validation-val_max_2_twosample_t_1d.png, ../../_images/Examples-Validation-val_max_2_twosample_t_1d.2x.png 2.00x" />
+</a>
+</figure>
+</section>
+<section id="regression">
+<h3>Regression<a class="headerlink" href="#regression" title="Permalink to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="../../_downloads/b6f01b0835d0a34c6ebf3d835f66806e/val_max_3_regress_1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/f9c5588aec849c5fac316826517ce618/val_max_3_regress_1d.2x.png"><code class="xref download docutils literal notranslate"><span class="pre">2x.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/9134411fe4c47cdf23b9460f025e180b/val_max_3_regress_1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/5097674c409ef01c8629a3fd6919c2ee/val_max_3_regress_1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/72a5a2c2b5e56f2a94c87513f4ffa2bc/val_max_3_regress_1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Examples-Validation-val_max_3_regress_1d.2x.png">
+<img alt="" class="plot-directive" src="../../_images/Examples-Validation-val_max_3_regress_1d.png" srcset="../../_images/Examples-Validation-val_max_3_regress_1d.png, ../../_images/Examples-Validation-val_max_3_regress_1d.2x.png 2.00x" />
+</a>
+</figure>
+</section>
+<section id="one-way-anova">
+<h3>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="../../_downloads/9f0cd1a60b80c15c8169711794d0a98e/val_max_4_anova1_1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/8ff40f9a3838fc69995ed215ac1e02a0/val_max_4_anova1_1d.2x.png"><code class="xref download docutils literal notranslate"><span class="pre">2x.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/892992cc0da5dce9616138148237b48d/val_max_4_anova1_1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/933e76c52321226b2037031fbd211f7e/val_max_4_anova1_1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/63bcaa0f865267c1aa3c2225bd33b6a9/val_max_4_anova1_1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Examples-Validation-val_max_4_anova1_1d.2x.png">
+<img alt="" class="plot-directive" src="../../_images/Examples-Validation-val_max_4_anova1_1d.png" srcset="../../_images/Examples-Validation-val_max_4_anova1_1d.png, ../../_images/Examples-Validation-val_max_4_anova1_1d.2x.png 2.00x" />
+</a>
+</figure>
+</section>
+</section>
+<hr class="docutils" />
+<section id="multivariate">
+<h2>Multivariate<a class="headerlink" href="#multivariate" title="Permalink to this heading">¶</a></h2>
+<section id="id1">
+<h3>One-sample<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="../../_downloads/719b3537a3ea96f9376bc90bd473d665/val_max_5_onesample_T2_1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/267c319af13e2991579ad56fae36e401/val_max_5_onesample_T2_1d.2x.png"><code class="xref download docutils literal notranslate"><span class="pre">2x.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/efafd81bb1f9932232664e84492b9b23/val_max_5_onesample_T2_1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/7ac92559979dc9350ab1e157ccfc2eae/val_max_5_onesample_T2_1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/0c2cbdae931a3056f994cb15e68cc94b/val_max_5_onesample_T2_1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Examples-Validation-val_max_5_onesample_T2_1d.2x.png">
+<img alt="" class="plot-directive" src="../../_images/Examples-Validation-val_max_5_onesample_T2_1d.png" srcset="../../_images/Examples-Validation-val_max_5_onesample_T2_1d.png, ../../_images/Examples-Validation-val_max_5_onesample_T2_1d.2x.png 2.00x" />
+</a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Increasing the number of iterations will cause the results to converge to RFT expectations.</p>
+</div>
+</section>
+<section id="id2">
+<h3>Two-sample<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="../../_downloads/f2d3367966018dba8202e57af116ecd4/val_max_6_twosample_T2_1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/bce0dfa8aef2fa8e662b55d3c3c4c11f/val_max_6_twosample_T2_1d.2x.png"><code class="xref download docutils literal notranslate"><span class="pre">2x.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/87d7800465d382c413b89822e76a68dc/val_max_6_twosample_T2_1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/a87e96382cca0f2ef6c27433acd182ea/val_max_6_twosample_T2_1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/1f716b7aaa85c76f2cd4058e6343cd18/val_max_6_twosample_T2_1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Examples-Validation-val_max_6_twosample_T2_1d.2x.png">
+<img alt="" class="plot-directive" src="../../_images/Examples-Validation-val_max_6_twosample_T2_1d.png" srcset="../../_images/Examples-Validation-val_max_6_twosample_T2_1d.png, ../../_images/Examples-Validation-val_max_6_twosample_T2_1d.2x.png 2.00x" />
+</a>
+</figure>
+</section>
+<section id="canonical-correlation-analysis">
+<h3>Canonical correlation analysis<a class="headerlink" href="#canonical-correlation-analysis" title="Permalink to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="../../_downloads/24fe35990a8a048473992be9cc44d4e8/val_max_7_cca_1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/722b2f30689bbde84b34f5d1e3677d5f/val_max_7_cca_1d.2x.png"><code class="xref download docutils literal notranslate"><span class="pre">2x.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/ece274f745acd3ba8f8bb263151fe544/val_max_7_cca_1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/fa3ae378fe850bb1c6ec0339cb13e33d/val_max_7_cca_1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/4dd1ea8a19867ecb4fc0a2144d3b77ef/val_max_7_cca_1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Examples-Validation-val_max_7_cca_1d.2x.png">
+<img alt="" class="plot-directive" src="../../_images/Examples-Validation-val_max_7_cca_1d.png" srcset="../../_images/Examples-Validation-val_max_7_cca_1d.png, ../../_images/Examples-Validation-val_max_7_cca_1d.2x.png 2.00x" />
+</a>
+</figure>
+</section>
+<section id="manova">
+<h3>MANOVA<a class="headerlink" href="#manova" title="Permalink to this heading">¶</a></h3>
+<p>(<a class="reference download internal" download="" href="../../_downloads/5bbc47d147b4922e07f0bc81033ff21b/val_max_8_manova1_1d.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/f7c5fa44de8484c033eac6401d587c33/val_max_8_manova1_1d.2x.png"><code class="xref download docutils literal notranslate"><span class="pre">2x.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/acf63605fd77153e683ee3e5854eddb6/val_max_8_manova1_1d.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/7321818ad367bf52ee9fc49eae2dab29/val_max_8_manova1_1d.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/7c5fcfd0a0e1f0abf70edd3f9cb64d0d/val_max_8_manova1_1d.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../../_images/Examples-Validation-val_max_8_manova1_1d.2x.png">
+<img alt="" class="plot-directive" src="../../_images/Examples-Validation-val_max_8_manova1_1d.png" srcset="../../_images/Examples-Validation-val_max_8_manova1_1d.png, ../../_images/Examples-Validation-val_max_8_manova1_1d.2x.png 2.00x" />
+</a>
+</figure>
+</section>
+</section>
+</section>
+
+
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ClusterLevel.html" class="btn btn-neutral float-left" title="Cluster-level inference (Gaussian)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Conjugation.html" class="btn btn-neutral float-right" title="Conjugation analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Todd Pataky.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.2.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_highlight.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
+
+

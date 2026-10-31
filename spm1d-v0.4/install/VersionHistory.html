@@ -1,0 +1,244 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Version 0.3 (Python and MATLAB) &#8212; spm1d 0.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script src="../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analysis of 2D data (Python)" href="../doc/Stats2D/ex2d.html" />
+    <link rel="prev" title="Version History" href="../NewFeatures.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+<script data-goatcounter="https://spm1d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../Downloads.html">Downloads</a></li>
+                <li><a href="../Documentation.html">Documentation</a></li>
+                <li><a href="../Addons.html">Add-ons</a></li>
+                <li><a href="../References.html">References</a></li>
+                <li><a href="../Workshops.html">Workshops</a></li>
+                <li><a href="../Support.html">Support</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Addons.html">Add-ons</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../NewFeatures.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NewFeatures.html#new-features">New Features</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Support.html">Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Version 0.3  (Python and MATLAB)</a></li>
+<li><a class="reference internal" href="#version-0-2-python">Version 0.2  (Python)</a></li>
+<li><a class="reference internal" href="#version-m-0-1-matlab">Version M.0.1  (MATLAB)</a></li>
+<li><a class="reference internal" href="#version-0-1-python">Version 0.1  (Python)</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">Version 0.3  (Python and MATLAB)</a></li>
+<li><a class="reference internal" href="#version-0-2-python">Version 0.2  (Python)</a></li>
+<li><a class="reference internal" href="#version-m-0-1-matlab">Version M.0.1  (MATLAB)</a></li>
+<li><a class="reference internal" href="#version-0-1-python">Version 0.1  (Python)</a></li>
+</ul>
+
+  <li>
+    <a href="../NewFeatures.html" title="Previous Chapter: Version History"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Version History</span>
+    </a>
+  </li>
+  <li>
+    <a href="../doc/Stats2D/ex2d.html" title="Next Chapter: Analysis of 2D data (Python)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Analysis of 2... &raquo;</span>
+    </a>
+  </li>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <div class="admonition note" id="label-versionhistory">
+<p class="admonition-title">Note</p>
+<p>Legacy versions of <strong>spm1d</strong> (0.1, 0.2 and M.0.1) are neither supported not available for download.</p>
+<p>This document simply provides release information for users interested in <strong>spm1d</strong>’s developmental history.</p>
+</div>
+<hr class="docutils" />
+<section id="version-0-3-python-and-matlab">
+<h1>Version 0.3  (Python and MATLAB)<a class="headerlink" href="#version-0-3-python-and-matlab" title="Link to this heading">¶</a></h1>
+<p>Released <strong>2015.07.01</strong></p>
+<p><a class="reference internal" href="../NewFeatures.html#label-newfeatures"><span class="std std-ref">Click here</span></a> for descriptions of new features.</p>
+<p>As of version 0.3 all version history notes now exist on <a class="reference external" href="https://github.com/0todd0000/spm1d/">spm1d’s github site</a>.</p>
+</section>
+<hr class="docutils" />
+<section id="version-0-2-python">
+<h1>Version 0.2  (Python)<a class="headerlink" href="#version-0-2-python" title="Link to this heading">¶</a></h1>
+<p>Released <strong>2014.08.25</strong></p>
+<ul class="simple">
+<li><p>Two-way ANOVA</p></li>
+<li><p>Non-sphericity corrections</p></li>
+<li><p>Improved plotting</p></li>
+<li><p>Detailed inference information</p></li>
+</ul>
+<p><strong>Version 0.2.0006</strong>  (2014.07.09):   Added a “h0reject” attribute to SPM inference objects to specify null hypothesis rejection decision.</p>
+<p><strong>Version 0.2.0005</strong>  (2014.06.24):   Fixed a plotting bug which generated a “No paths provided” error if (a) an SPM object contains no suprathreshold clusters and (b) plotting is conducted in Spyder for Windows.</p>
+<p><strong>Version 0.2.0004</strong>  (2014.06.11):   Added data check to all stats routines, including checks for zero variance nodes.</p>
+<p><strong>Version 0.2.0003</strong>  (2014.06.04):   Updated to be be compatible with scipy version 0.14</p>
+<p><strong>Version 0.2.0002</strong>  (2014.05.27):   Fixed a bug which returned p values of 2.0 when the entire field exceeds the threshold</p>
+<p><strong>Version 0.2.0001</strong>  (2014.05.25)</p>
+<ul class="simple">
+<li><p>plotting functions now automatically scale the axis y limits by default</p></li>
+<li><p>fixed a bug in one-way ANOVA which produced an error when testing more than three treatments/groups</p></li>
+<li><p>fixed a bug in two-way ANOVA (main effects model) which produced an error when testing more than two levels of Factor A</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="version-m-0-1-matlab">
+<h1>Version M.0.1  (MATLAB)<a class="headerlink" href="#version-m-0-1-matlab" title="Link to this heading">¶</a></h1>
+<p>Released <strong>2014.05.25</strong></p>
+<p><strong>Version M0.2.0005</strong>  (2014.11.28):   Fixed an infinite value bug in ./spm1d/spm8/inference/spm_uc_RF.m to be compatible with recent Matlab versions.</p>
+<p><strong>Version M0.1.0004</strong> (2014.07.09):   Added a “h0reject” field to SPM inference structures to specify null hypothesis rejection decision.</p>
+<p><strong>Version M0.1.0003</strong> (2014.06.27):   Fixed an “extents” error that can appear when running ANOVA.</p>
+<p><strong>Version M0.1.0002</strong> (2014.06.10):   Added a feature:  SPM inference structures now include cluster extents.</p>
+<p><strong>Version M0.1.0001</strong> (2014.05.29):   Fixed a bug which returned p values of NaN when the entire field exceeds the threshold</p>
+</section>
+<hr class="docutils" />
+<section id="version-0-1-python">
+<h1>Version 0.1  (Python)<a class="headerlink" href="#version-0-1-python" title="Link to this heading">¶</a></h1>
+<p>Released <strong>2010.12.01</strong></p>
+<p>Basic data IO, plotting, and statistical tests (t tests, regression, one-way ANOVA, and general linear modelling).</p>
+</section>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2026, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

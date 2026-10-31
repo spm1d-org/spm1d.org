@@ -1,0 +1,237 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Summary statistics &#8212; spm1d 0.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="One- and two-sample tests" href="../Stats1D/onetwosample.html" />
+    <link rel="prev" title="Data processing basics" href="processing.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+<script data-goatcounter="https://spm1d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+                <li><a href="../../Support.html">Support</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features">New Features</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Support.html">Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Summary statistics</a><ul>
+<li><a class="reference internal" href="#means-and-sd-clouds">Means and SD clouds</a></li>
+<li><a class="reference internal" href="#arbitrary-variance-clouds">Arbitrary variance clouds</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">Summary statistics</a><ul>
+<li><a class="reference internal" href="#means-and-sd-clouds">Means and SD clouds</a></li>
+<li><a class="reference internal" href="#arbitrary-variance-clouds">Arbitrary variance clouds</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="processing.html" title="Previous Chapter: Data processing basics"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Data processi...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../Stats1D/onetwosample.html" title="Next Chapter: One- and two-sample tests"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">One- and two-... &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <section id="summary-statistics">
+<span id="label-examples-summarystats"></span><h1>Summary statistics<a class="headerlink" href="#summary-statistics" title="Link to this heading">¶</a></h1>
+<p>The examples below describe <strong>spm1d</strong>’s basic summary statistic functionality, which is housed in <strong>spm1d.plot</strong>.</p>
+<section id="means-and-sd-clouds">
+<h2>Means and SD clouds<a class="headerlink" href="#means-and-sd-clouds" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/summarystats/ex_plot_meansd.py</span></code></p>
+<p>Load data:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova</span><span class="o">.</span><span class="n">SpeedGRFcategorical</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="p">,</span><span class="n">A</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y1</span>      <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y2</span>      <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y3</span>      <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">A</span><span class="o">==</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Each variable (<strong>Y1</strong>, <strong>Y2</strong> and <strong>Y3</strong>) is a (20 x 100) data array. Mean and standard deviation clouds can be plotted as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_mean_sd</span><span class="p">(</span><span class="n">Y0</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s1">'b'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Slow'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_mean_sd</span><span class="p">(</span><span class="n">Y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Normal'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_mean_sd</span><span class="p">(</span><span class="n">Y2</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">0.7</span><span class="p">),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Fast'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../../_downloads/9c622786fe902e985120754f07491ff7/ex_plot_meansd.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/677659d52f413bd9827266926e6f3199/ex_plot_meansd.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/a9c3be14ca3524f229b4f558264dce5e/ex_plot_meansd.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/be100592408cf371af5c5d7dc0a2a164/ex_plot_meansd.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../_images/ex_plot_meansd.png" class="plot-directive" src="../../_images/ex_plot_meansd.png" />
+</figure>
+</section>
+<section id="arbitrary-variance-clouds">
+<span id="label-examples-arbitraryvar"></span><h2>Arbitrary variance clouds<a class="headerlink" href="#arbitrary-variance-clouds" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">./spm1d/examples/summarystats/ex_plot_errorcloud.py</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y0</span><span class="p">,</span><span class="n">Y1</span><span class="p">,</span><span class="n">Y2</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="s1">'speed-kinematics-categorical'</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">datum</span>    <span class="o">=</span> <span class="n">Y1</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#arbitrary datum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">err</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">datum</span><span class="o">.</span><span class="n">size</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>   <span class="c1">#arbitrary error cloud</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">datum</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_errorcloud</span><span class="p">(</span><span class="n">datum</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'r'</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../../_downloads/8c95ee2bc2b7be62f670c6755ed909ed/ex_plot_errorcloud.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/7a650ec4e7212f36c5e4a76c6a50a252/ex_plot_errorcloud.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/9f112ed772a2ea9b77d21eb3dc97df6b/ex_plot_errorcloud.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../../_downloads/e61015bbb4bf609bc318eb651f083d50/ex_plot_errorcloud.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../../_images/ex_plot_errorcloud.png" class="plot-directive" src="../../_images/ex_plot_errorcloud.png" />
+</figure>
+</section>
+</section>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2026, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

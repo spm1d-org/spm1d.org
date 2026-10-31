@@ -1,0 +1,302 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Built-in datasets &#8212; spm1d 0.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data processing basics" href="processing.html" />
+    <link rel="prev" title="Importing data" href="importing.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+<script data-goatcounter="https://spm1d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+                <li><a href="../../Support.html">Support</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features">New Features</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Support.html">Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Built-in datasets</a><ul>
+<li><a class="reference internal" href="#loading-datasets">Loading datasets</a></li>
+<li><a class="reference internal" href="#dataset-details">Dataset details</a></li>
+<li><a class="reference internal" href="#checking-expected-results">Checking expected results</a></li>
+<li><a class="reference internal" href="#notes-on-1d-datasets">Notes on 1D datasets</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">Built-in datasets</a><ul>
+<li><a class="reference internal" href="#loading-datasets">Loading datasets</a></li>
+<li><a class="reference internal" href="#dataset-details">Dataset details</a></li>
+<li><a class="reference internal" href="#checking-expected-results">Checking expected results</a></li>
+<li><a class="reference internal" href="#notes-on-1d-datasets">Notes on 1D datasets</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="importing.html" title="Previous Chapter: Importing data"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Importing data</span>
+    </a>
+  </li>
+  <li>
+    <a href="processing.html" title="Next Chapter: Data processing basics"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Data processi... &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <section id="built-in-datasets">
+<span id="label-builtindata"></span><h1>Built-in datasets<a class="headerlink" href="#built-in-datasets" title="Link to this heading">¶</a></h1>
+<p><strong>spm1d</strong> comes packages with a variety of 0D and 1D datasets located in <strong>./spm1d/data</strong>.</p>
+<p>This document provides a brief overview of the built-in datasets.</p>
+<p>To explore the datasets please use the scripts in <strong>spm1d/examples</strong>.</p>
+<section id="loading-datasets">
+<h2>Loading datasets<a class="headerlink" href="#loading-datasets" title="Link to this heading">¶</a></h2>
+<p>All datasets can be accessed using the following syntax:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>where:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>spm1d.data.<code class="docutils literal notranslate"><span class="pre">uv0d</span></code> refers to univariate zero-dimensional data</p></li>
+<li><p>spm1d.data.uv0d.<code class="docutils literal notranslate"><span class="pre">anova1</span></code> refers to the type of statistical test</p></li>
+<li><p>dataset.<code class="docutils literal notranslate"><span class="pre">get_data()</span></code> extracts only the variable needed for the given test</p></li>
+</ul>
+</div></blockquote>
+<p>NOTES:</p>
+<ul class="simple">
+<li><p>For access to univariate 1D datasets, and multivariate 0D and 1D datasets, use <strong>spm1d.data.uv1d</strong>, <strong>spm1d.data.mv0d</strong> and <strong>spm1d.data.mv1d</strong>, respectively.</p></li>
+<li><p>The datasets contain a variety of other variables including web links and expected results.</p></li>
+</ul>
+</section>
+<section id="dataset-details">
+<h2>Dataset details<a class="headerlink" href="#dataset-details" title="Link to this heading">¶</a></h2>
+<p><strong>spm1d</strong> no longer provides detailed dataset descriptions.</p>
+<p>Instead users should consult the references and web links provided with each dataset as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">dataset</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>The result will look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dataset</span>
+        <span class="n">Name</span>      <span class="p">:</span> <span class="s2">"Cars"</span>
+        <span class="n">Design</span>    <span class="p">:</span>  <span class="n">One</span><span class="o">-</span><span class="n">way</span> <span class="n">ANOVA</span>
+        <span class="n">Data</span> <span class="n">dim</span>  <span class="p">:</span>  <span class="mi">0</span>
+        <span class="n">Web</span>       <span class="p">:</span>  <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">cba</span><span class="o">.</span><span class="n">ualr</span><span class="o">.</span><span class="n">edu</span><span class="o">/</span><span class="n">smartstat</span><span class="o">/</span><span class="n">topics</span><span class="o">/</span><span class="n">anova</span><span class="o">/</span><span class="n">example</span><span class="o">.</span><span class="n">pdf</span>
+<span class="p">(</span><span class="n">Expected</span> <span class="n">results</span><span class="p">)</span>
+        <span class="n">F</span>         <span class="p">:</span>  <span class="mf">25.17</span>
+        <span class="n">df</span>        <span class="p">:</span>  <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">p</span>         <span class="p">:</span>  <span class="mf">0.001207</span>
+</pre></div>
+</div>
+</section>
+<section id="checking-expected-results">
+<h2>Checking expected results<a class="headerlink" href="#checking-expected-results" title="Link to this heading">¶</a></h2>
+<p>The expected results shown in the example above can be corroborated against <strong>spm1d</strong>’s calculations as follows:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">dataset</span> <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv0d</span><span class="o">.</span><span class="n">anova1</span><span class="o">.</span><span class="n">Cars</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span><span class="p">,</span><span class="n">A</span>     <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">F</span>       <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">anova1</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Fi</span>      <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span> <span class="n">Fi</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>Here <em>Y</em> and <em>A</em> are both 9-component vectors, where <em>Y</em> represents the observations and where <em>A</em> continains integers which indicate groups.</p>
+<p>The <strong>spm1d</strong> result is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPM</span><span class="p">{</span><span class="n">F</span><span class="p">}</span> <span class="p">(</span><span class="mi">0</span><span class="n">D</span><span class="p">)</span> <span class="n">inference</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">z</span>        <span class="p">:</span>  <span class="mf">25.17541</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">df</span>       <span class="p">:</span>  <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">Inference</span><span class="p">:</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">alpha</span>    <span class="p">:</span>  <span class="mf">0.050</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">zstar</span>    <span class="p">:</span>  <span class="mf">5.14325</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">h0reject</span> <span class="p">:</span>  <span class="kc">True</span>
+        <span class="n">SPM</span><span class="o">.</span><span class="n">p</span>        <span class="p">:</span>  <span class="mf">0.00121</span>
+</pre></div>
+</div>
+<p>Note that the F statistic (SPM.z), degrees of freedom (SPM.df) and p value (SPM.p) match the expected dataset results.</p>
+<p>The critical test statistic threshold at alpha (SPM.zstar) is not typically reported, but is an essential component of 1D analyses so is also presented in 0D results for comparisons between 0D and 1D critical thresholds.</p>
+</section>
+<section id="notes-on-1d-datasets">
+<h2>Notes on 1D datasets<a class="headerlink" href="#notes-on-1d-datasets" title="Link to this heading">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only 0D datasets contain expected results.</p>
+<p>For one-dimensional result verifications refer to the references provided.</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span> <span class="n">dataset</span>      <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uv1d</span><span class="o">.</span><span class="n">anova2</span><span class="o">.</span><span class="n">Besier2009kneeflexion</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span>        <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>  <span class="c1">#A:foot, B:speed</span>
+<span class="gp">&gt;&gt;&gt; </span> <span class="nb">print</span><span class="p">(</span> <span class="n">dataset</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>This will yield:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Dataset
+        Name      : "Besier2009kneeflexion"
+        Design    :  Two-way ANOVA
+        Data dim  :  1
+        Reference :  Besier, T. F., Fredericson, M., Gold, G. E., Beaupré, G. S., &amp; Delp, S. L. (2009). Knee muscle forces during walking and running in patellofemoral pain patients and pain-free controls. Journal of Biomechanics, 42(7), 898–905. http://doi.org/10.1016/j.jbiomech.2009.01.032
+        Web       :  https://simtk.org/home/muscleforces
+        Data file :  /Users/todd/Documents/Python/myLibraries/spm1d/data/datafiles/Besier2009kneeflexion.npz
+        Results   :  Pataky, T. C., Vanrenterghem, J., &amp; Robinson, M. A. (2015). Two-way ANOVA for scalar trajectories, with experimental evidence of non-phasic interactions. Journal of Biomechanics, 48(1), 186–189. http://doi.org/10.1016/j.jbiomech.2014.10.013
+(Expected results)
+        F          :  None
+        df         :  None
+        p          :  None
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2026, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

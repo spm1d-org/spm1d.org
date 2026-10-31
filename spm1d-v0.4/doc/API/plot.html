@@ -1,0 +1,526 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>spm1d.plot &#8212; spm1d 0.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="spm1d.stats" href="stats.html" />
+    <link rel="prev" title="spm1d.io" href="io.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+<script data-goatcounter="https://spm1d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+                <li><a href="../../Support.html">Support</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features">New Features</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Support.html">Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">spm1d.plot</a><ul>
+<li><a class="reference internal" href="#plot-errorcloud">plot_errorcloud</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_errorcloud"><code class="docutils literal notranslate"><span class="pre">plot_errorcloud()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-mean-sd">plot_mean_sd</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_mean_sd"><code class="docutils literal notranslate"><span class="pre">plot_mean_sd()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-spm">plot_spm</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_spm"><code class="docutils literal notranslate"><span class="pre">plot_spm()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-spmi">plot_spmi</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_spmi"><code class="docutils literal notranslate"><span class="pre">plot_spmi()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-spmi-p-values">plot_spmi_p_values</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_spmi_p_values"><code class="docutils literal notranslate"><span class="pre">plot_spmi_p_values()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-spmi-threshold-label">plot_spmi_threshold_label</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_spmi_threshold_label"><code class="docutils literal notranslate"><span class="pre">plot_spmi_threshold_label()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">spm1d.plot</a><ul>
+<li><a class="reference internal" href="#plot-errorcloud">plot_errorcloud</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_errorcloud"><code class="docutils literal notranslate"><span class="pre">plot_errorcloud()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-mean-sd">plot_mean_sd</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_mean_sd"><code class="docutils literal notranslate"><span class="pre">plot_mean_sd()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-spm">plot_spm</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_spm"><code class="docutils literal notranslate"><span class="pre">plot_spm()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-spmi">plot_spmi</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_spmi"><code class="docutils literal notranslate"><span class="pre">plot_spmi()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-spmi-p-values">plot_spmi_p_values</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_spmi_p_values"><code class="docutils literal notranslate"><span class="pre">plot_spmi_p_values()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plot-spmi-threshold-label">plot_spmi_threshold_label</a><ul>
+<li><a class="reference internal" href="#spm1d.plot.plot_spmi_threshold_label"><code class="docutils literal notranslate"><span class="pre">plot_spmi_threshold_label()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="io.html" title="Previous Chapter: spm1d.io"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; spm1d.io</span>
+    </a>
+  </li>
+  <li>
+    <a href="stats.html" title="Next Chapter: spm1d.stats"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">spm1d.stats &raquo;</span>
+    </a>
+  </li>
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <section id="module-spm1d.plot">
+<span id="spm1d-plot"></span><span id="label-api-plot"></span><h1>spm1d.plot<a class="headerlink" href="#module-spm1d.plot" title="Link to this heading">¶</a></h1>
+<p>This module contains a variety of plotting functions.</p>
+<p>The following functions may be accessed as methods of <strong>spm1d</strong> SPM objects:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>spm1d.plot</p></th>
+<th class="head"><p>SPM instance method</p></th>
+<th class="head"><p>SPM inference instance method</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>plot_spm</p></td>
+<td><p>plot</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>plot_spm_design</p></td>
+<td><p>plot_design</p></td>
+<td><p>plot_design</p></td>
+</tr>
+<tr class="row-even"><td><p>plot_spmi</p></td>
+<td></td>
+<td><p>plot</p></td>
+</tr>
+<tr class="row-odd"><td><p>plot_spmi_p_values</p></td>
+<td></td>
+<td><p>plot_p_values</p></td>
+</tr>
+<tr class="row-even"><td><p>plot_spmi_threshold_label</p></td>
+<td></td>
+<td><p>plot_threshold_label</p></td>
+</tr>
+</tbody>
+</table>
+<p>All other plotting functions can only be accessed via <strong>spm1d.plot</strong>.
+These include:</p>
+<ul class="simple">
+<li><p>plot_cloud</p></li>
+<li><p>plot_errorcloud</p></li>
+<li><p>plot_mean_sd</p></li>
+</ul>
+<hr class="docutils" />
+<section id="plot-errorcloud">
+<h2>plot_errorcloud<a class="headerlink" href="#plot-errorcloud" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spm1d.plot.plot_errorcloud">
+<span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_errorcloud</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datum</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_errorcloud"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_errorcloud" title="Link to this definition">¶</a></dt>
+<dd><p>Plot an arbitrary error cloud surrounding a datum continuum.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>datum</em> — a 1D list or numpy array</p></li>
+<li><p><em>sd</em> — a 1D list or numpy array</p></li>
+<li><p><em>ax</em> — optional matplotlib.axes object</p></li>
+<li><p><em>x</em> — optional vector of x positions  [default: np.arange(datum.size)]</p></li>
+<li><p><em>facecolor</em> — optional face color (for the SD cloud)</p></li>
+<li><p><em>edgecolor</em> — optional edge color (for the SD cloud)</p></li>
+<li><p><em>alpha</em> — optional face alpha value (for the SD cloud)</p></li>
+<li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p>a <strong>matplotlib.collections.PatchCollection</strong> object</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">pyplot</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>     <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_errorcloud</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pyplot</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="plot-mean-sd">
+<h2>plot_mean_sd<a class="headerlink" href="#plot-mean-sd" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spm1d.plot.plot_mean_sd">
+<span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_mean_sd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edgecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_mean_sd"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_mean_sd" title="Link to this definition">¶</a></dt>
+<dd><p>Plot mean continuum with standard deviation cloud.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>Y</em> — a (J x Q) numpy array</p></li>
+<li><p><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</p></li>
+<li><p><em>x</em> — optional vector of x positions  [default: np.arange(Y.shape[1])]</p></li>
+<li><p><em>lw</em> — optional integer specify line width</p></li>
+<li><p><em>linecolor</em> — optional line color specifier (for the mean continuum)</p></li>
+<li><p><em>linestyle</em> — optional line style specifier (for the mean continuum)</p></li>
+<li><p><em>facecolor</em> — optional face color (for the SD cloud)</p></li>
+<li><p><em>edgecolor</em> — optional edge color (for the SD cloud)</p></li>
+<li><p><em>alpha</em> — optional face alpha value (for the SD cloud)</p></li>
+<li><p><em>label</em> — optional string to label the mean continuum (for use with matplotlib.pyplot.legend())</p></li>
+<li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
+<li><p><em>roi</em> — optional region-of-interest vector (either boolean OR vector of (-1, 0, +1))</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>None</em></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">spm1d</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plot_mean_sd</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="plot-spm">
+<h2>plot_spm<a class="headerlink" href="#plot-spm" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spm1d.plot.plot_spm">
+<span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_spm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_xlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwdargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_spm" title="Link to this definition">¶</a></dt>
+<dd><p>Plot an <strong>spm1d</strong> SPM object as a line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>spm</em> — an <strong>spm1d</strong> SPM object (not needed if using the SPM.plot method)</p></li>
+<li><p><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</p></li>
+<li><p><em>plot_ylabel</em> — if <em>True</em>, then an “SPM{t}” or “SPM{F}” label will automatically be added to the y axis</p></li>
+<li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
+<li><p><em>kwdards</em> — any keyword argument accepted by <strong>matplotlib.pyplot.plot</strong></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>h</em> — a <strong>matplotlib.lines.Line2D</strong> object</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span>  <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>   <span class="c1"># equivalent to "line = spm1d.plot.plot_spm(t)"</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">line</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s1">'r'</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="plot-spmi">
+<h2>plot_spmi<a class="headerlink" href="#plot-spmi" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spm1d.plot.plot_spmi">
+<span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_spmi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spmi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">linestyle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">facecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0.8'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_thresh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_ylabel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thresh_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_xlim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_spmi" title="Link to this definition">¶</a></dt>
+<dd><p>Plot an <strong>spm1d</strong> SPM inference object as a line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>spmi</em> — an <strong>spm1d</strong> SPM object</p></li>
+<li><p><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</p></li>
+<li><p><em>color</em> — optional line color specifier (for the raw SPM)</p></li>
+<li><p><em>linestyle</em> — optional line style specifier (for the raw SPM)</p></li>
+<li><p><em>marker</em> — optional marker specifier (for the raw SPM)</p></li>
+<li><p><em>facecolor</em> — optional face color (for suprathreshold clusters)</p></li>
+<li><p><em>plot_thresh</em> — if <em>True</em>, one or two horizontal threshold lines will be plotted (for one- or two-tailed inference)</p></li>
+<li><p><em>plot_ylabel</em> — if <em>True</em>, an “SPM{t}” or “SPM{F}” label will automatically be added to the y axis</p></li>
+<li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>None</em></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span>    <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>   <span class="c1"># equivalent to "spm1d.plot.plot_spmi(ti)"</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="plot-spmi-p-values">
+<h2>plot_spmi_p_values<a class="headerlink" href="#plot-spmi-p-values" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spm1d.plot.plot_spmi_p_values">
+<span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_spmi_p_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spmi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offsets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset_all_clusters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi_p_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_spmi_p_values" title="Link to this definition">¶</a></dt>
+<dd><p>Plot an <strong>spm1d</strong> SPM inference object’s p values as text (if they exist).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>spmi</em> — an <strong>spm1d</strong> SPM inference object</p></li>
+<li><p><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</p></li>
+<li><p><em>size</em> — optional integer specifying font size</p></li>
+<li><p><em>offsets</em> — optional list of 2-tuples specifying (x,y) offsets with respect to cluster centroids</p></li>
+<li><p><em>offset_all_clusters</em> — optional 2-tuple specifying the (x,y) offset for all clusters, with respect to cluster centroids</p></li>
+<li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>None</em></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>   <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span>  <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">myoffsets</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)]</span>  <span class="c1"># if there are three clusters, there must be three 2-tuple offsets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">(</span><span class="n">offsets</span><span class="o">=</span><span class="n">myoffsets</span><span class="p">)</span> <span class="c1">#equivalent to: "spm1d.plot.plot_p_values(ti, offsets=myoffsets)"</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<hr class="docutils" />
+<section id="plot-spmi-threshold-label">
+<h2>plot_spmi_threshold_label<a class="headerlink" href="#plot-spmi-threshold-label" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="spm1d.plot.plot_spmi_threshold_label">
+<span class="sig-prename descclassname"><span class="pre">spm1d.plot.</span></span><span class="sig-name descname"><span class="pre">plot_spmi_threshold_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spmi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">autoset_ylim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwdargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/spm1d/plot.html#plot_spmi_threshold_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#spm1d.plot.plot_spmi_threshold_label" title="Link to this definition">¶</a></dt>
+<dd><p>Plot an <strong>spm1d</strong> SPM inference object as a line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p><em>spmi</em> — an <strong>spm1d</strong> SPM inference object</p></li>
+<li><p><em>ax</em> — optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</p></li>
+<li><p><em>lower</em> — if True, will plot the label on the lower threshold (if two-tailed inference has been conducted)</p></li>
+<li><p><em>pos</em> — optional 2-tuple specifying text object location; setting “pos” over-rides “lower”</p></li>
+<li><p><em>autoset_ylim</em> — if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</p></li>
+<li><p><em>kwdards</em> — any keyword argument accepted by <strong>matplotlib.pyplot.text</strong></p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<ul class="simple">
+<li><p>a <strong>matplotlib.text.Text</strong> object</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Example<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span>     <span class="o">=</span> <span class="n">spm1d</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span>    <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ti</span><span class="o">.</span><span class="n">plot_threshold_label</span><span class="p">(</span><span class="n">pos</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mf">3.0</span><span class="p">))</span>   <span class="c1"># equivalent to "spm1d.plot.plot_spmi_threshold_label(ti, pos=(50,3.0))"</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2026, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

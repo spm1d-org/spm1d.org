@@ -1,0 +1,575 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>spm1d.plot &#8212; spm1d 0.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <script src="../../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+
+<script data-goatcounter="https://spm1d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../../index.html"><img src="../../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../Downloads.html">Downloads</a></li>
+                <li><a href="../../Documentation.html">Documentation</a></li>
+                <li><a href="../../Addons.html">Add-ons</a></li>
+                <li><a href="../../References.html">References</a></li>
+                <li><a href="../../Workshops.html">Workshops</a></li>
+                <li><a href="../../Support.html">Support</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Addons.html">Add-ons</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../NewFeatures.html#new-features">New Features</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Support.html">Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<form action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <h1>Source code for spm1d.plot</h1><div class="highlight"><pre>
+<span></span>
+<span class="sd">'''</span>
+<span class="sd">This module contains a variety of plotting functions.</span>
+
+<span class="sd">The following functions may be accessed as methods of **spm1d** SPM objects:</span>
+
+<span class="sd">=========================  ===================== ===============================</span>
+<span class="sd">spm1d.plot                 SPM instance method   SPM inference instance method</span>
+<span class="sd">=========================  ===================== ===============================</span>
+<span class="sd">plot_spm                   plot</span>
+<span class="sd">plot_spm_design            plot_design           plot_design</span>
+<span class="sd">plot_spmi                                        plot</span>
+<span class="sd">plot_spmi_p_values                               plot_p_values</span>
+<span class="sd">plot_spmi_threshold_label                        plot_threshold_label</span>
+<span class="sd">=========================  ===================== ===============================</span>
+
+
+<span class="sd">All other plotting functions can only be accessed via **spm1d.plot**.</span>
+<span class="sd">These include:</span>
+
+<span class="sd">- plot_cloud</span>
+<span class="sd">- plot_errorcloud</span>
+<span class="sd">- plot_mean_sd</span>
+<span class="sd">'''</span>
+
+<span class="c1"># Copyright (C) 2026  Todd Pataky</span>
+<span class="c1"># updated (2016/10/01) todd</span>
+
+
+
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span> <span class="n">_plot</span> <span class="kn">import</span><span class="w"> </span><span class="nn">DataPlotter</span><span class="o">,</span><span class="w"> </span><span class="nn">SPMPlotter</span><span class="o">,</span><span class="w"> </span><span class="nn">SPMiPlotter</span><span class="o">,</span><span class="w"> </span><span class="nn">_legend_manual</span>
+
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">legend_manual</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">markerfacecolors</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwdargs</span><span class="p">):</span>
+	<span class="k">return</span> <span class="n">_legend_manual</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">linestyles</span><span class="p">,</span> <span class="n">markerfacecolors</span><span class="p">,</span> <span class="n">linewidths</span><span class="p">,</span> <span class="o">**</span><span class="n">kwdargs</span><span class="p">)</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_ci_0d</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">,</span> <span class="n">color_criterion</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot a one-sample confidence interval for 0D data.</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span>   <span class="o">=</span> <span class="n">DataPlotter</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">plot_errorbar</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">hstar</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">ci</span><span class="o">.</span><span class="n">mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_datum</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_criterion</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">set_ax_prop</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[])</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_ci_multisample_0d</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'b'</span><span class="p">,</span> <span class="n">color_criterion</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot a paired- or two-sample confidence interval for 0D data.</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span>   <span class="o">=</span> <span class="n">DataPlotter</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">ci</span><span class="o">.</span><span class="n">criterion_type</span> <span class="o">==</span> <span class="s1">'meanB'</span><span class="p">:</span>
+		<span class="n">hbarw</span> <span class="o">=</span> <span class="mf">0.1</span>
+		<span class="n">x0</span><span class="p">,</span><span class="n">x1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">2.4</span><span class="o">*</span><span class="n">hbarw</span><span class="o">*</span><span class="n">ci</span><span class="o">.</span><span class="n">hstar</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_errorbar</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">meanA</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">hstar</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">hbarw</span><span class="o">=</span><span class="n">hbarw</span><span class="p">)</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">meanB</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_criterion</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">markersize</span><span class="p">)</span>
+		<span class="c1"># plotter.plot_errorbar(ci.meanB, ci.hstar, color=color_criterion, x=x1, hbarw=hbarw)</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_datum</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">meanB</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_criterion</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">ci</span><span class="o">.</span><span class="n">criterion_type</span> <span class="o">==</span> <span class="s1">'tailB'</span><span class="p">:</span>
+		<span class="n">hbarw</span> <span class="o">=</span> <span class="mf">0.1</span>
+		<span class="n">x0</span><span class="p">,</span><span class="n">x1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="o">*</span><span class="n">hbarw</span><span class="o">*</span><span class="n">ci</span><span class="o">.</span><span class="n">hstar</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_errorbar</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">meanA</span><span class="p">,</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">ci</span><span class="o">.</span><span class="n">hstar</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">hbarw</span><span class="o">=</span><span class="n">hbarw</span><span class="p">)</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_errorbar</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">meanB</span><span class="p">,</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">ci</span><span class="o">.</span><span class="n">hstar</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_criterion</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x1</span><span class="p">,</span> <span class="n">hbarw</span><span class="o">=</span><span class="n">hbarw</span><span class="p">)</span>
+		<span class="n">y</span>     <span class="o">=</span> <span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">meanB</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">ci</span><span class="o">.</span><span class="n">hstar</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span> <span class="n">ci</span><span class="o">.</span><span class="n">meanB</span> <span class="o">&gt;</span> <span class="n">ci</span><span class="o">.</span><span class="n">meanA</span> <span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">meanB</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">ci</span><span class="o">.</span><span class="n">hstar</span><span class="p">)</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_datum</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_criterion</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+
+
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_ci</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'0.8'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'0.8'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot a condfidence interval.</span>
+<span class="sd">	'''</span>
+	<span class="n">y</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">Q</span>     <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">hstar</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">Q</span>
+	<span class="c1">### initialize plotter:</span>
+	<span class="n">plotter</span>   <span class="o">=</span> <span class="n">DataPlotter</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">_set_x</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+	<span class="c1">### plot datum, error cloud and threshold:</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">linecolor</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">plot_cloud</span><span class="p">([</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="n">h</span><span class="p">],</span> <span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">ci</span><span class="o">.</span><span class="n">mu</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="k">if</span> <span class="n">ci</span><span class="o">.</span><span class="n">isscalarmu</span><span class="p">:</span>
+			<span class="n">plotter</span><span class="o">.</span><span class="n">plot_datum</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">ci</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ci</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+	<span class="c1">### set axes limits:</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">_set_xlim</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_ci_multisample</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">linecolors</span><span class="o">=</span><span class="p">(</span><span class="s1">'k'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">),</span> <span class="n">facecolors</span><span class="o">=</span><span class="p">(</span><span class="s1">'0.8'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">),</span> <span class="n">edgecolors</span><span class="o">=</span><span class="p">(</span><span class="s1">'0.8'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">),</span> <span class="n">color_criterion</span><span class="o">=</span><span class="s1">'r'</span><span class="p">,</span> <span class="n">alphas</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot a multi-mean condfidence interval.</span>
+<span class="sd">	'''</span>
+	<span class="c1">### assemble means and thresholds:</span>
+	<span class="n">mA</span><span class="p">,</span><span class="n">mB</span><span class="p">,</span><span class="n">h</span>     <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">meanA</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">meanB</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">hstar</span>
+	<span class="c1">### initialize plotter:</span>
+	<span class="n">plotter</span>     <span class="o">=</span> <span class="n">DataPlotter</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">_set_x</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ci</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+	<span class="c1">### assemble line and face properties:</span>
+	<span class="n">linecolors</span>  <span class="o">=</span> <span class="n">linecolors</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">linecolors</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span><span class="nb">list</span><span class="p">))</span> <span class="k">else</span> <span class="p">[</span><span class="n">linecolors</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span>
+	<span class="n">facecolors</span>  <span class="o">=</span> <span class="n">facecolors</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">facecolors</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span><span class="nb">list</span><span class="p">))</span> <span class="k">else</span> <span class="p">[</span><span class="n">facecolors</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span>
+	<span class="n">edgecolors</span>  <span class="o">=</span> <span class="n">edgecolors</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">edgecolors</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span><span class="nb">list</span><span class="p">))</span> <span class="k">else</span> <span class="p">[</span><span class="n">edgecolors</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span>
+	<span class="n">alphas</span>      <span class="o">=</span> <span class="n">alphas</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span><span class="nb">list</span><span class="p">))</span>     <span class="k">else</span> <span class="p">[</span><span class="n">alphas</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span>
+	<span class="c1">### datum- and criterion-dependent plotting:</span>
+	<span class="k">if</span> <span class="n">ci</span><span class="o">.</span><span class="n">criterion_type</span> <span class="o">==</span> <span class="s1">'meanB'</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mA</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">linecolors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_cloud</span><span class="p">([</span><span class="n">mA</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">mA</span><span class="o">-</span><span class="n">h</span><span class="p">],</span> <span class="n">facecolors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edgecolors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alphas</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mB</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_criterion</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+	<span class="k">elif</span> <span class="n">ci</span><span class="o">.</span><span class="n">criterion_type</span> <span class="o">==</span> <span class="s1">'tailB'</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mA</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">linecolors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mB</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">linecolors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+		<span class="n">hA</span> <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_cloud</span><span class="p">([</span><span class="n">mA</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">mA</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">],</span> <span class="n">facecolors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edgecolors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alphas</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edgelinestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+		<span class="n">hB</span> <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_cloud</span><span class="p">([</span><span class="n">mB</span><span class="o">+</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">mB</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">],</span> <span class="n">facecolors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">edgecolors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">alphas</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">edgelinestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">_set_xlim</span><span class="p">()</span>
+
+
+
+
+
+<div class="viewcode-block" id="plot_errorcloud">
+<a class="viewcode-back" href="../../doc/API/plot.html#spm1d.plot.plot_errorcloud">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_errorcloud</span><span class="p">(</span><span class="n">datum</span><span class="p">,</span> <span class="n">sd</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'0.8'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'0.8'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot an arbitrary error cloud surrounding a datum continuum.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *datum* --- a 1D list or numpy array</span>
+<span class="sd">	- *sd* --- a 1D list or numpy array</span>
+<span class="sd">	- *ax* --- optional matplotlib.axes object</span>
+<span class="sd">	- *x* --- optional vector of x positions  [default: np.arange(datum.size)]</span>
+<span class="sd">	- *facecolor* --- optional face color (for the SD cloud)</span>
+<span class="sd">	- *edgecolor* --- optional edge color (for the SD cloud)</span>
+<span class="sd">	- *alpha* --- optional face alpha value (for the SD cloud)</span>
+<span class="sd">	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</span>
+
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- a **matplotlib.collections.PatchCollection** object</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; import numpy as np</span>
+<span class="sd">	&gt;&gt;&gt; from matplotlib import pyplot</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; a     = np.random.rand(50)</span>
+<span class="sd">	&gt;&gt;&gt; b     = np.random.rand(50)</span>
+<span class="sd">	&gt;&gt;&gt; spm1d.plot.plot_errorcloud(a, b)</span>
+<span class="sd">	&gt;&gt;&gt; pyplot.xlim(0, 50)</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span>  <span class="o">=</span> <span class="n">DataPlotter</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">_set_x</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">datum</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+	<span class="n">y</span><span class="p">,</span><span class="n">s</span>      <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">datum</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sd</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+	<span class="n">Y</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="o">+</span><span class="n">s</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="n">s</span><span class="p">])</span>
+	<span class="n">h</span>        <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_cloud</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">h</span></div>
+
+
+
+
+
+
+
+<div class="viewcode-block" id="plot_mean_sd">
+<a class="viewcode-back" href="../../doc/API/plot.html#spm1d.plot.plot_mean_sd">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_mean_sd</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'-'</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'0.8'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'0.8'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">roi</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot mean continuum with standard deviation cloud.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *Y* --- a (J x Q) numpy array</span>
+<span class="sd">	- *ax* --- optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</span>
+<span class="sd">	- *x* --- optional vector of x positions  [default: np.arange(Y.shape[1])]</span>
+<span class="sd">	- *lw* --- optional integer specify line width</span>
+<span class="sd">	- *linecolor* --- optional line color specifier (for the mean continuum)</span>
+<span class="sd">	- *linestyle* --- optional line style specifier (for the mean continuum)</span>
+<span class="sd">	- *facecolor* --- optional face color (for the SD cloud)</span>
+<span class="sd">	- *edgecolor* --- optional edge color (for the SD cloud)</span>
+<span class="sd">	- *alpha* --- optional face alpha value (for the SD cloud)</span>
+<span class="sd">	- *label* --- optional string to label the mean continuum (for use with matplotlib.pyplot.legend())</span>
+<span class="sd">	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</span>
+<span class="sd">	- *roi* --- optional region-of-interest vector (either boolean OR vector of (-1, 0, +1))</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- *None*</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; Y  = np.random.randn(10,101)</span>
+<span class="sd">	&gt;&gt;&gt; spm1d.plot.plot_mean_sd(Y)</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span>  <span class="o">=</span> <span class="n">DataPlotter</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">_set_x</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+	<span class="c1">### plot mean and SD:</span>
+	<span class="n">Y</span>        <span class="o">=</span> <span class="n">Y</span> <span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span>   <span class="n">Y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">roi</span><span class="p">)]</span><span class="o">*</span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>   <span class="p">)</span>
+	<span class="n">m</span><span class="p">,</span><span class="n">s</span>      <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">Y</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">h</span>        <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">linecolor</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="k">if</span> <span class="n">label</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+		<span class="n">h</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+	<span class="c1">### plot SD:</span>
+	<span class="n">Y</span>        <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="o">+</span><span class="n">s</span><span class="p">,</span> <span class="n">m</span><span class="o">-</span><span class="n">s</span><span class="p">])</span>
+	<span class="n">hc</span>       <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_cloud</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_axlim</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">h</span><span class="p">,</span><span class="n">hc</span></div>
+
+
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_roi</span><span class="p">(</span><span class="n">roi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'0.7'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'w'</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+	<span class="n">plotter</span>   <span class="o">=</span> <span class="n">DataPlotter</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">plot_roi</span><span class="p">(</span><span class="n">roi</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+
+
+
+
+<div class="viewcode-block" id="plot_spm">
+<a class="viewcode-back" href="../../doc/API/plot.html#spm1d.plot.plot_spm">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_spm</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">plot_ylabel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">autoset_xlim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwdargs</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot an **spm1d** SPM object as a line.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *spm* --- an **spm1d** SPM object (not needed if using the SPM.plot method)</span>
+<span class="sd">	- *ax* --- optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</span>
+<span class="sd">	- *plot_ylabel* --- if *True*, then an "SPM{t}" or "SPM{F}" label will automatically be added to the y axis</span>
+<span class="sd">	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</span>
+<span class="sd">	- *kwdards* --- any keyword argument accepted by **matplotlib.pyplot.plot**</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- *h* --- a **matplotlib.lines.Line2D** object</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; t     = spm1d.stats.ttest(Y)</span>
+<span class="sd">	&gt;&gt;&gt; line  = t.plot()   # equivalent to "line = spm1d.plot.plot_spm(t)"</span>
+<span class="sd">	&gt;&gt;&gt; line.set_color('r')</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span> <span class="o">=</span> <span class="n">SPMPlotter</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">**</span><span class="n">kwdargs</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">plot_ylabel</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_ylabel</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">autoset_xlim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_xlim</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">()</span></div>
+
+	
+
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_spm_design</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">factor_labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot the design matrix.</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	None</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span> <span class="o">=</span> <span class="n">SPMPlotter</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">plot_design</span><span class="p">(</span><span class="n">factor_labels</span><span class="p">,</span> <span class="n">fontsize</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="plot_spmi">
+<a class="viewcode-back" href="../../doc/API/plot.html#spm1d.plot.plot_spmi">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_spmi</span><span class="p">(</span><span class="n">spmi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'-'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">'0.8'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">plot_thresh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+			  <span class="n">plot_ylabel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">thresh_color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">autoset_xlim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot an **spm1d** SPM inference object as a line.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *spmi* --- an **spm1d** SPM object</span>
+<span class="sd">	- *ax* --- optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</span>
+<span class="sd">	- *color* --- optional line color specifier (for the raw SPM)</span>
+<span class="sd">	- *linestyle* --- optional line style specifier (for the raw SPM)</span>
+<span class="sd">	- *marker* --- optional marker specifier (for the raw SPM)</span>
+<span class="sd">	- *facecolor* --- optional face color (for suprathreshold clusters)</span>
+<span class="sd">	- *plot_thresh* --- if *True*, one or two horizontal threshold lines will be plotted (for one- or two-tailed inference)</span>
+<span class="sd">	- *plot_ylabel* --- if *True*, an "SPM{t}" or "SPM{F}" label will automatically be added to the y axis</span>
+<span class="sd">	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- *None*</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; t     = spm1d.stats.ttest(Y)</span>
+<span class="sd">	&gt;&gt;&gt; ti    = t.inference(0.05)</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot()   # equivalent to "spm1d.plot.plot_spmi(ti)"</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span> <span class="o">=</span> <span class="n">SPMiPlotter</span><span class="p">(</span><span class="n">spmi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">plotter</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">lw</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">linestyle</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span> <span class="n">marker</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">thresh_color</span><span class="o">=</span><span class="n">thresh_color</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">plot_ylabel</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">plot_ylabel</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">autoset_xlim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_xlim</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">()</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="plot_spmi_p_values">
+<a class="viewcode-back" href="../../doc/API/plot.html#spm1d.plot.plot_spmi_p_values">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_spmi_p_values</span><span class="p">(</span><span class="n">spmi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">offsets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">offset_all_clusters</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot an **spm1d** SPM inference object's p values as text (if they exist).</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *spmi* --- an **spm1d** SPM inference object</span>
+<span class="sd">	- *ax* --- optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</span>
+<span class="sd">	- *size* --- optional integer specifying font size</span>
+<span class="sd">	- *offsets* --- optional list of 2-tuples specifying (x,y) offsets with respect to cluster centroids</span>
+<span class="sd">	- *offset_all_clusters* --- optional 2-tuple specifying the (x,y) offset for all clusters, with respect to cluster centroids</span>
+<span class="sd">	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- *None*</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; t   = spm1d.stats.ttest(Y)</span>
+<span class="sd">	&gt;&gt;&gt; ti  = t.inference(0.05)</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot()</span>
+<span class="sd">	&gt;&gt;&gt; myoffsets = [(0,0), (0,0.2), (0,0.1)]  # if there are three clusters, there must be three 2-tuple offsets</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot_p_values(offsets=myoffsets) #equivalent to: "spm1d.plot.plot_p_values(ti, offsets=myoffsets)"</span>
+<span class="sd">	</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span> <span class="o">=</span> <span class="n">SPMiPlotter</span><span class="p">(</span><span class="n">spmi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">h</span>       <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_p_values</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">offsets</span><span class="p">,</span> <span class="n">offset_all_clusters</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">h</span></div>
+
+
+
+
+
+
+
+
+<div class="viewcode-block" id="plot_spmi_threshold_label">
+<a class="viewcode-back" href="../../doc/API/plot.html#spm1d.plot.plot_spmi_threshold_label">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_spmi_threshold_label</span><span class="p">(</span><span class="n">spmi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">autoset_ylim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwdargs</span><span class="p">):</span>
+<span class="w">	</span><span class="sd">'''</span>
+<span class="sd">	Plot an **spm1d** SPM inference object as a line.</span>
+<span class="sd">	</span>
+<span class="sd">	:Parameters:</span>
+<span class="sd">	</span>
+<span class="sd">	- *spmi* --- an **spm1d** SPM inference object</span>
+<span class="sd">	- *ax* --- optional matplotlib.axes object  [default: matplotlib.pyplot.gca()]</span>
+<span class="sd">	- *lower* --- if True, will plot the label on the lower threshold (if two-tailed inference has been conducted)</span>
+<span class="sd">	- *pos* --- optional 2-tuple specifying text object location; setting "pos" over-rides "lower"</span>
+<span class="sd">	- *autoset_ylim* --- if True (default), will set the y axis limits so that all text, line and patch objects are visible inside the axes</span>
+<span class="sd">	- *kwdards* --- any keyword argument accepted by **matplotlib.pyplot.text**</span>
+<span class="sd">	</span>
+<span class="sd">	:Returns:</span>
+<span class="sd">	</span>
+<span class="sd">	- a **matplotlib.text.Text** object</span>
+<span class="sd">	</span>
+<span class="sd">	:Example:</span>
+<span class="sd">	</span>
+<span class="sd">	&gt;&gt;&gt; t     = spm1d.stats.ttest(Y)</span>
+<span class="sd">	&gt;&gt;&gt; ti    = t.inference(0.05)</span>
+<span class="sd">	&gt;&gt;&gt; ti.plot_threshold_label(pos=(50,3.0))   # equivalent to "spm1d.plot.plot_spmi_threshold_label(ti, pos=(50,3.0))"</span>
+<span class="sd">	'''</span>
+	<span class="n">plotter</span> <span class="o">=</span> <span class="n">SPMiPlotter</span><span class="p">(</span><span class="n">spmi</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+	<span class="n">h</span>       <span class="o">=</span> <span class="n">plotter</span><span class="o">.</span><span class="n">plot_threshold_label</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="n">lower</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="o">**</span><span class="n">kwdargs</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">autoset_ylim</span><span class="p">:</span>
+		<span class="n">plotter</span><span class="o">.</span><span class="n">_set_ylim</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">h</span></div>
+
+
+</pre></div>
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2026, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

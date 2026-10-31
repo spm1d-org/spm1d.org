@@ -1,0 +1,249 @@
+
+
+
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Detailed installation (Python) &#8212; spm1d 0.4 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/bootstrap-sphinx.css?v=4468db6d" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script src="../_static/documentation_options.js?v=7f00635f"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Detailed installation (MATLAB)" href="InstallationMatlab.html" />
+    <link rel="prev" title="Downloads" href="../Downloads.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<script type="text/javascript" src="../_static/js/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+
+<script data-goatcounter="https://spm1d.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  </head><body>
+
+<div style="background-color: white; text-align: left; padding: 10px 10px 15px 15px">
+<a href="../index.html"><img src="../logo.png" border="0" alt="spm1d"/></a>
+</div>
+
+
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+              </a>
+        <span class="navbar-text navbar-version pull-left"><b>0.4</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../Downloads.html">Downloads</a></li>
+                <li><a href="../Documentation.html">Documentation</a></li>
+                <li><a href="../Addons.html">Add-ons</a></li>
+                <li><a href="../References.html">References</a></li>
+                <li><a href="../Workshops.html">Workshops</a></li>
+                <li><a href="../Support.html">Support</a></li>
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../Downloads.html">Downloads</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Addons.html">Add-ons</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../NewFeatures.html">Version History</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../NewFeatures.html#new-features">New Features</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Documentation.html">Documentation (Python)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../DocumentationMatlab.html">Documentation (Matlab)</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Workshops.html">Workshops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Workshops.html#sponsored-courses">Sponsored Courses</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Support.html">Support</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Detailed installation (Python)</a><ul>
+<li><a class="reference internal" href="#python-users">Python users</a></li>
+<li><a class="reference internal" href="#python-resources">Python resources</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper"><ul>
+<li><a class="reference internal" href="#">Detailed installation (Python)</a><ul>
+<li><a class="reference internal" href="#python-users">Python users</a></li>
+<li><a class="reference internal" href="#python-resources">Python resources</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="../Downloads.html" title="Previous Chapter: Downloads"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Downloads</span>
+    </a>
+  </li>
+  <li>
+    <a href="InstallationMatlab.html" title="Next Chapter: Detailed installation (MATLAB)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Detailed inst... &raquo;</span>
+    </a>
+  </li>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="body col-md-9 content" role="main">
+      
+  <section id="detailed-installation-python">
+<span id="label-installationpython"></span><h1>Detailed installation (Python)<a class="headerlink" href="#detailed-installation-python" title="Link to this heading">¶</a></h1>
+<section id="python-users">
+<h2>Python users<a class="headerlink" href="#python-users" title="Link to this heading">¶</a></h2>
+<p><strong>spm1d</strong> requires the following packages:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.python.org">Python 3.8</a></p></li>
+<li><p><a class="reference external" href="http://numpy.org">NumPy 1.19</a></p></li>
+<li><p><a class="reference external" href="http://scipy.org">SciPy 1.6</a></p></li>
+<li><p><a class="reference external" href="http://matplotlib.org">Matplotlib 3.3</a></p></li>
+</ul>
+<p>Newer or older versions may work but have not been thoroughly tested.</p>
+<p>If you are new to Python we highly recommend starting out with the <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda package</a> .  All of spm1d’s dependencies are available in the default Anaconda installation.</p>
+<p>After installing Anaconda, open a Terminal (Linux, Mac) or an Anaconda Command Prompt (Windows) and enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">spm1d</span>
+</pre></div>
+</div>
+<p>To check installation, launch Python or IPython:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span>
+</pre></div>
+</div>
+<p>then enter:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">spm1d</span>
+</pre></div>
+</div>
+<p>If there are no error messages generated then congratulations, you’re ready to go!</p>
+</section>
+<section id="python-resources">
+<h2>Python resources<a class="headerlink" href="#python-resources" title="Link to this heading">¶</a></h2>
+<p>A variety of online resources exist for learning Python.
+If you are new to Python the best place to start might be the main Python documentation site:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/index.html">https://docs.python.org/3/index.html</a></p></li>
+</ul>
+<p>Matlab users may find these documents useful:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://scipy.github.io/old-wiki/pages/NumPy_for_Matlab_Users">http://scipy.github.io/old-wiki/pages/NumPy_for_Matlab_Users</a></p></li>
+<li><p><a class="reference external" href="http://mathesaurus.sourceforge.net/matlab-numpy.html">http://mathesaurus.sourceforge.net/matlab-numpy.html</a></p></li>
+</ul>
+<p>Other helpful documentation can be found here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/reference/">NumPy Reference</a></p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/">SciPy Reference</a></p></li>
+<li><p><a class="reference external" href="https://matplotlib.org">Matplotlib Documentation</a></p></li>
+</ul>
+<p>Book suggestions:</p>
+<ul class="simple">
+<li><p>Chun WJ (2006) Core Python Programming, Prentice Hall.</p></li>
+<li><p>Idris I (2013) NumPy Beginner’s Guide, Packt Publishing.</p></li>
+<li><p>Langtangen HP (2009) Python Scripting for Computational Science, Springer.</p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2026, Todd Pataky.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
