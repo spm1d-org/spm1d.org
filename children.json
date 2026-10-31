@@ -14,10 +14,5 @@
     "repo": "spm1d-org/power1d",
     "workflows": ["publish", "docs"],
     "artifact": "docs-html"
-  },
-  "support": {
-    "repo": "spm1d-support/site",
-    "workflows": ["docs"],
-    "artifact": "docs-html"
   }
 }
