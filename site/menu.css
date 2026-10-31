@@ -9,6 +9,3 @@
 .side a { color: #555; text-decoration: none; }
 .side a:hover, .side a:focus { color: #222; text-decoration: underline; }
 .side .sep { margin: 0.5rem 0; border-top: 1px solid #e5e5e5; }
-.side .sub > a::after { content: " \25B8"; color: #999; font-size: 0.8rem; }
-.side .sub > ul { display: none; }
-.side .sub:hover > ul, .side .sub:focus-within > ul { display: block; }
