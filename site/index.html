@@ -10,7 +10,6 @@
   h1 { font-size: 2.4rem; margin-bottom: 0.2rem; }
   .tagline { font-size: 1.2rem; color: #555; margin-top: 0; }
   .menu { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 2rem 1rem; margin: 2rem 0; }
-  @media (max-width: 40rem) { .menu { grid-template-columns: 1fr; } }
   .menu .item { display: flex; flex-direction: column; gap: 0.4rem; }
   .menu .button { flex: 1; display: block; padding: 1.2rem 1.25rem; color: #fff; text-decoration: none; border-radius: 8px; }
   .menu .item:nth-child(1) .button { background: #1f4e79; }
@@ -18,6 +17,9 @@
   .menu .item:nth-child(3) .button { background: #E9A14D; }
   .menu .item:nth-child(4) .button { background: #1f4e79; }
   .menu .item:nth-child(5) .button { background: #922913; }
+  .menu .item:nth-child(6) { grid-column: 1; }
+  .menu .item:nth-child(6) .button { background: #333333; }
+  @media (max-width: 40rem) { .menu { grid-template-columns: 1fr; } .menu .item:nth-child(6) { grid-column: auto; } }
   .menu .button:hover, .menu .button:focus { filter: brightness(1.15); }
   .menu .meta { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .menu .meta img { display: block; height: 20px; }
@@ -100,6 +102,9 @@
 <span class="meta">
 <a class="stars" href="https://github.com/spm1d-org/registration1d"><img src="https://img.shields.io/badge/Star-white?style=social&amp;logo=github" alt="Star registration1d on GitHub"></a>
 </span>
+</div>
+<div class="item">
+<a class="button" href="spm1d-v0.5/"><span class="name">spm1d v0.5</span></a>
 </div>
 
 </nav>
