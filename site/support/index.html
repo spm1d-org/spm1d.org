@@ -7,6 +7,7 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 52rem; margin: 3rem auto; padding: 0 1.25rem; color: #222; line-height: 1.5; }
   h1 { font-size: 2rem; }
+  pre { background: #f6f6f6; padding: 0.8rem 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.85rem; }
   a.home { color: #777; text-decoration: none; font-size: 0.95rem; }
 </style>
 <link rel="stylesheet" href="../menu.css">
@@ -34,7 +35,13 @@
 <a class="home" href="../">&larr; spm1d</a>
 <h1>Support</h1>
 
-<h2>Bug reports</h2>
+<ul>
+<li><b>Questions, discussion and feature requests</b>: the spm1d forum (see <a href="#forum">Forum and private support</a>)</li>
+<li><b>Bug reports</b>: the issue tracker of the package you are using (see <a href="#bug-reports">Bug reports</a> and <a href="#bug-report-guidelines">Bug report guidelines</a>)</li>
+<li><b>Email support</b> is unavailable; if you have questions please use the spm1d forum</li>
+</ul>
+
+<h2 id="bug-reports">Bug reports</h2>
 <p>If spm1d produces an error or a result you believe is wrong, please open an
 issue in the repository of the version you are using, with a minimal example
 that reproduces it:</p>
@@ -46,7 +53,97 @@ that reproduces it:</p>
 <li>registration1d: <a href="https://github.com/spm1d-org/registration1d/issues">registration1d/issues</a></li>
 </ul>
 
-<h2>Forum and private support</h2>
+<h2 id="bug-report-guidelines">Bug report guidelines</h2>
+<p>Acceptable bug reports include:</p>
+<ul>
+<li><b>an unexpected error</b>: an error that spm1d does <i>not</i> raise deliberately. Errors raised deliberately, with a message that explains how to avoid them, are <i>not</i> bugs.</li>
+<li><b>an unexpected warning</b>: a warning that does <i>not</i> signal documented behavior.</li>
+<li><b>an unexpected result</b>: you can prove that an spm1d output, error or warning is demonstrably wrong.</li>
+</ul>
+<p>Before submitting a bug report please:</p>
+<ul>
+<li>Read <a href="#not-bug-reports">Questions that are not bug reports</a></li>
+<li>Prepare your report following <a href="#before-opening">Before opening an issue</a></li>
+<li>Assemble your report following <a href="#must-contain">What a bug report must contain</a> and <a href="#must-not-contain">What a bug report must NOT contain</a></li>
+</ul>
+
+<h3 id="not-bug-reports">Questions that are not bug reports</h3>
+<p>The following types of questions are good but they are <i>not</i> bugs. They should be submitted to the spm1d forum:</p>
+<ul>
+<li>How to properly use spm1d procedures</li>
+<li>What an spm1d procedure&rsquo;s arguments mean</li>
+<li>What spm1d procedures are suitable for a particular experimental design</li>
+<li>How to prepare your data</li>
+<li>How to interpret or report spm1d results</li>
+<li>How spm1d relates to statistics procedures like: power, sample size, multiple comparisons corrections, etc.</li>
+<li>Requests to look at a dataset or an analysis script</li>
+<li>etc.</li>
+</ul>
+
+<h3 id="before-opening">Before opening an issue</h3>
+<ol>
+<li><b>Check that you are on the current version.</b></li>
+<li><b>Search the existing bug reports</b> (both open and closed) for similar reports.</li>
+<li><b>Reduce the problem.</b> Remove everything from your script that is unnecessary to reproduce the problem. A minimal, reproducible example will help the spm1d team to solve the problem quickly. If you go through the process of simplifying a script you may also discover the source of the problem.</li>
+</ol>
+
+<h3 id="must-contain">What a bug report must contain</h3>
+<p>A bug must be reproducible. A report therefore requires all of the following:</p>
+<ul>
+<li><b>A minimal example that runs.</b> The example must be complete, self-contained and as short as possible. Do not attach your own data; use a built-in dataset or create random data that represent the problematic features of your dataset.</li>
+<li><b>What you expected to happen</b> and why.</li>
+<li><b>What actually happened</b>: spm1d outputs and/or figures. If an unexpected error or warning was produced then copy the full error/warning and paste as text into the bug report.</li>
+<li><b>One problem per issue.</b> Two problems should be submitted as separate issues.</li>
+<li><b>Configuration details</b>: the versions of spm1d, Python, NumPy, SciPy and Matplotlib, and your operating system.</li>
+</ul>
+
+<p><b>Template</b></p>
+<pre><code>#### What I did
+
+```python
+import numpy as np
+import rft1d
+import spm1d
+
+np.random.seed(0)
+y    = rft1d.randn1d(8, 101, 20)
+spmi = spm1d.stats.ttest(y).inference(0.05)
+print( spmi )
+```
+
+#### What I expected
+
+...
+
+#### What happened
+
+...
+
+#### Versions
+
+```
+spm1d       ...
+rft1d       ...
+numpy       ...
+scipy       ...
+matplotlib  ...
+python      ...
+platform    ...
+```
+</code></pre>
+
+<h3 id="must-not-contain">What a bug report must NOT contain</h3>
+<ul>
+<li><b>Data.</b> A report that can only be reproduced with a specific dataset is a report that hasn&rsquo;t been thoroughly considered. If the problem depends on some property of your data (for example a constant column, a missing value or a particular sample size), say so and reproduce that property with random numbers.</li>
+<li><b>Unnecessary commands.</b> Include only commands that are necessary to reproduce the bug. A 200-line script with the problem somewhere inside it is a request to debug your script and is not a bug report.</li>
+<li><b>Screenshots of text.</b> Copy-and-paste output / error / warning text if relevant. Figure screenshots or renderings are fine.</li>
+<li><b>Multiple problems.</b> Open a separate issue for each problem you encounter.</li>
+</ul>
+
+<h2>Feature requests</h2>
+<p>Please submit feature requests to the spm1d forum. Describe what you want to do and/or the feature. Please do not submit requests for non-Python support (MATLAB, R, etc.).</p>
+
+<h2 id="forum">Forum and private support</h2>
 <ul>
 <li><a href="forum-rules.html">Forum rules</a></li>
 <li><a href="private-support-policy.html">Private support policy</a></li>
