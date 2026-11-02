@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>power1d.noise &#8212; power1d 0.1.7 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=0c472235" />
+    <link rel="stylesheet" type="text/css" href="../_static/pyramid.css?v=424f8d56" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <script src="../_static/documentation_options.js?v=ca7ad2ea"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="power1d.prob" href="prob.html" />
+    <link rel="prev" title="power1d.models" href="models.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+<div class="header" role="banner">
+  <div class="logo">
+    <a href="../index.html">
+      <img class="logo" src="../_static/logo.png" border="0" alt="Logo"/>
+    </a>
+  </div>
+</div>
+
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="prob.html" title="power1d.prob"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="power1d.models"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" accesskey="U">API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.noise</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-power1d.noise">
+<span id="power1d-noise"></span><span id="label-api-noise"></span><h1>power1d.noise<a class="headerlink" href="#module-power1d.noise" title="Link to this heading">¶</a></h1>
+<p>One-dimensional noise models.</p>
+<p>Copyright (C) 2023  Todd Pataky</p>
+<p>The figure below provides overview of all noise types. Details regarding reach are listed below.</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/130e90613c9716f40233985bc27497c7/all_noise.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/d189af69fd7239e1a33155d7231ff66a/all_noise.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/2f27b1e567cf7aca3859f11ccc23698b/all_noise.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/a7533e89f50b9d1a0411c54112307a42/all_noise.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/all_noise.png" class="plot-directive" src="../_images/all_noise.png" />
+</figure>
+<section id="from-array">
+<span id="label-api-noise-from-array"></span><h2>from_array<a class="headerlink" href="#from-array" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.from_array">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">from_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.from_array" title="Link to this definition">¶</a></dt>
+<dd><p>Create Scaled noise object from a 1D array.</p>
+<p>This function is equivalent to creating a Scaled noise object.</p>
+<p>While redundant this function is included for API consistency,
+as a sister-function to geom.from_array and
+models.datasample_from_array</p>
+<p>Arguments:</p>
+<p><em>noise</em> —- a Noise object</p>
+<p><em>x</em> —- scaling array (1D numpy array)</p>
+<p>Outputs:</p>
+<p><em>obj</em> —- a Scaled noise object</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">J</span>      <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># sample size</span>
+<span class="n">Q</span>      <span class="o">=</span> <span class="mi">101</span>  <span class="c1"># number of continuum nodes</span>
+<span class="n">x</span>      <span class="o">=</span> <span class="mf">5.1</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">noise</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">30</span> <span class="p">)</span> <span class="c1"># baseline noise model</span>
+<span class="n">snoise</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">from_array</span><span class="p">(</span> <span class="n">noise</span><span class="p">,</span> <span class="n">x</span> <span class="p">)</span> <span class="c1"># scaled noise object</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">x</span> <span class="p">)</span>
+<span class="n">snoise</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">labels</span>  <span class="o">=</span> <span class="s1">'Baseline noise model'</span><span class="p">,</span> <span class="s1">'Scaling array'</span><span class="p">,</span> <span class="s1">'Scaled noise'</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span><span class="n">labels</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/8f366d3b12f89efd97bd1c4bdeb90b65/noise-1.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/fcf0cb4741f83e939a320d8836f3c213/noise-1.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/478f44f0e6036c48f5421bc8fcf15cd5/noise-1.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/5f4d54b16b307b8c26c29e9b1d177077/noise-1.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-1.png" class="plot-directive" src="../_images/noise-1.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="from-residuals">
+<span id="label-api-noise-from-residuals"></span><h2>from_residuals<a class="headerlink" href="#from-residuals" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.from_residuals">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">from_residuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.from_residuals" title="Link to this definition">¶</a></dt>
+<dd><p>Convenience function for creating Scaled noise objects from sets of
+experimental residuals.</p>
+<p>The mean of the residuals must be zero (i.e., the null continuum)</p>
+<p>WARNING! As shown in the example below, “from_residuals” may produce a
+noise model that does NOT embody all features of the residuals. In
+this case more complex noise modeling (e.g. Additive, Mixture) may
+be required.</p>
+<p>Arguments:</p>
+<p><em>r</em> —- a (J,Q) array of experimental residuals (J=observations, Q=domain nodes)</p>
+<p>Outputs:</p>
+<p><em>obj</em> —- a Scaled noise object</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">y</span>      <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">weather</span><span class="p">()[</span><span class="s1">'Atlantic'</span><span class="p">]</span>
+<span class="n">r</span>      <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span> <span class="c1"># residuals</span>
+<span class="n">snoise</span> <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">from_residuals</span><span class="p">(</span> <span class="n">r</span> <span class="p">)</span> <span class="c1"># scaled noise object</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">tight_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">y</span><span class="o">.</span><span class="n">T</span> <span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">r</span><span class="o">.</span><span class="n">T</span> <span class="p">)</span>
+<span class="n">snoise</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">labels</span>  <span class="o">=</span> <span class="s1">'Original data'</span><span class="p">,</span> <span class="s1">'Residuals'</span><span class="p">,</span> <span class="s1">'Scaled noise model'</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span><span class="p">,</span><span class="n">s</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span><span class="n">labels</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/bc7e9976388e56cb36126c7194145a91/noise-2.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ceb7a13642ce83c09579efd048a5787f/noise-2.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/9d68d437b27129cac5525c112d2e0405/noise-2.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6f7ae5e5215d5c6cb30250a0feb26f4c/noise-2.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-2.png" class="plot-directive" src="../_images/noise-2.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="additive">
+<h2>Additive<a class="headerlink" href="#additive" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.Additive">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">Additive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">noise_models</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Additive" title="Link to this definition">¶</a></dt>
+<dd><p>Additive model (sum of two or more other noise types.)</p>
+<p>Arguments:</p>
+<p>A sequence of power1d.noise models (must have the same shape:  (J,Q) )</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">501</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">100</span> <span class="p">)</span>
+<span class="n">noise1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">501</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span> <span class="p">)</span>
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Additive</span><span class="p">(</span><span class="n">noise0</span><span class="p">,</span> <span class="n">noise1</span><span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/c4a2abb15d1c801ba7f899fc70dee8e7/noise-3.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ceb88fd7c7a103612ac3b4edb9259550/noise-3.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/bdced336f7370f851d8d132616723acd/noise-3.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/922fd1873340c8460722e0fe131fc84e/noise-3.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-3.png" class="plot-directive" src="../_images/noise-3.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="constantgaussian">
+<h2>ConstantGaussian<a class="headerlink" href="#constantgaussian" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.ConstantGaussian">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">ConstantGaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.ConstantGaussian" title="Link to this definition">¶</a></dt>
+<dd><p>Gaussian-distributed constant continuum noise.</p>
+<p>Each of the J continua has a constant value, and these values
+are distributed normally according to <em>mu</em> and <em>sigma</em>.</p>
+<p>Arguments:</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>x0</em> —- minimum value (float or int) (default 0)</p>
+<p><em>x1</em> —- maximum value (float or int) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">ConstantGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/43243df4ef3b12cfd1d06c6a774b5650/noise-4.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/15fba66f074da5d601b2959c807f9b33/noise-4.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6b3c9840159c239dd17be6ffe125d62d/noise-4.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/cda2d66853d2f7d18ca5704e0c276af0/noise-4.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-4.png" class="plot-directive" src="../_images/noise-4.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="constantuniform">
+<h2>ConstantUniform<a class="headerlink" href="#constantuniform" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.ConstantUniform">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">ConstantUniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.ConstantUniform" title="Link to this definition">¶</a></dt>
+<dd><p>Uniformly-distributed constant continuum noise.</p>
+<p>Each of the J continua has a constant value, and these values
+are distributed uniformly between <em>x0</em> and <em>x1</em>.</p>
+<p>Arguments:</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>x0</em> —- mean (float or int) (default 0)</p>
+<p><em>x1</em> —- standard deviation (float or int) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">ConstantUniform</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">1.3</span> <span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/feed2ac6a63482321f778cda52d90545/noise-5.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/01fd73256a24e594334c3cbcf77a25a7/noise-5.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/62ba33d38d929fccebd7a3aaf7f3b005/noise-5.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/8f785178f3b1f69fe1a80f94c8c87d9d/noise-5.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-5.png" class="plot-directive" src="../_images/noise-5.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="gaussian">
+<h2>Gaussian<a class="headerlink" href="#gaussian" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.Gaussian">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">Gaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Gaussian" title="Link to this definition">¶</a></dt>
+<dd><p>Uncorrelated Gaussian noise.</p>
+<p>Arguments:</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>mu</em> —- mean (float or int) (default 0)</p>
+<p><em>sigma</em> —- standard deviation (float or int) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/e421acbd31b14e9f2f4f19188ac5cd00/noise-6.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/36111c59dd729967ce17bff459c3a696/noise-6.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/838722d73e1c74cecb1d50b51b9d8c1f/noise-6.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/cc2ca7e3b39e3f47b648fddac12c69e2/noise-6.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-6.png" class="plot-directive" src="../_images/noise-6.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="mixture">
+<h2>Mixture<a class="headerlink" href="#mixture" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.Mixture">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">Mixture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">noise_models</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Mixture" title="Link to this definition">¶</a></dt>
+<dd><p>Noise mixture model (mixture of noise types in a fixed ratio)</p>
+<p>Arguments:</p>
+<p>A sequence of power1d.noise models  (must have the same shape:  (,Q) )</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">20</span> <span class="p">)</span>
+<span class="n">noise1</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Mixture</span><span class="p">(</span><span class="n">noise0</span><span class="p">,</span> <span class="n">noise1</span><span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/e2876de4f0c0e93ddd58668e116e64b1/noise-7.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f4d25255c15a372b31fd6b96f373a25d/noise-7.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/dd7d6e56b383990df417711cf086748e/noise-7.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/8283e9b106b163e2f0a4487dea7c28ea/noise-7.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-7.png" class="plot-directive" src="../_images/noise-7.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="scaled">
+<h2>Scaled<a class="headerlink" href="#scaled" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.Scaled">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">Scaled</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Scaled" title="Link to this definition">¶</a></dt>
+<dd><p>Scaled noise model.</p>
+<p>Arguments:</p>
+<p><em>noise</em> —- a power1d.noise object</p>
+<p><em>scale</em> —- a numpy array or a power1d.primitive object</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">Q</span>       <span class="o">=</span> <span class="mi">101</span>
+<span class="n">noise0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">scale</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Scaled</span><span class="p">(</span><span class="n">noise0</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/783200bc96751ffe5e49ff22ff4f209d/noise-8.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/a9db3f9b01d4e8c225d8298466820128/noise-8.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/eaf2184da4cc92b37c93cfc712de56e9/noise-8.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/86f0f458bcc6d3f718e275e284f18b59/noise-8.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-8.png" class="plot-directive" src="../_images/noise-8.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="signaldependent">
+<h2>SignalDependent<a class="headerlink" href="#signaldependent" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.SignalDependent">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">SignalDependent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.SignalDependent" title="Link to this definition">¶</a></dt>
+<dd><p>Signal-dependent noise model.</p>
+<p>Arguments:</p>
+<p><em>noise</em> —- a power1d.noise object</p>
+<p><em>signal</em> —- a numpy array or a power1d.signal object</p>
+<p><em>fn</em> —- an arbitrary function of noise and signal (default fn = lambda n,s: n + (n * s))</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">Q</span>       <span class="o">=</span> <span class="mi">101</span>
+<span class="n">noise0</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Gaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">signal</span>  <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">geom</span><span class="o">.</span><span class="n">GaussianPulse</span><span class="p">(</span><span class="n">Q</span><span class="o">=</span><span class="n">Q</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">amp</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">fn</span>      <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">,</span><span class="n">s</span><span class="p">:</span> <span class="n">n</span> <span class="o">+</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">s</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SignalDependent</span><span class="p">(</span><span class="n">noise0</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/d08f51e87fd10ef5613a53c21d407f9c/noise-9.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b027504e2073007eb96da7ca6188da3d/noise-9.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/19a70c384c42f55c894dd836d7ba0bb6/noise-9.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/c85cd7311f96fb588ddf09a8656687dd/noise-9.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-9.png" class="plot-directive" src="../_images/noise-9.png" />
+</figure>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.Skewed">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">Skewed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Skewed" title="Link to this definition">¶</a></dt>
+<dd><p>Skewed noise.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Skewed distributions are approximate and may not be consistent     with theoretical solutions. In particular the their maximum likelihoods are not <em>mu</em>.   In <strong>power1d</strong> skewed distribution are meant only to be used as tools to approximate    experimentally observed skewed noise and / or for exploratory purposes (i.e. to examine power changes associated with roughly skewed distributions).</p>
+</div>
+<p>Arguments:</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>mu</em> —- mean (float or int) (default 0)</p>
+<p><em>sigma</em> —- standard deviation (float or int) (default 1)</p>
+<p><em>alpha</em> —- skewness (float or int) (default 0)</p>
+<p>Modified from a StackOverflow contribution by jamesj629:</p>
+<p><a class="reference external" href="http://stackoverflow.com/questions/36200913/generate-n-random-numbers-from-a-skew-normal-distribution-using-numpy">http://stackoverflow.com/questions/36200913/generate-n-random-numbers-from-a-skew-normal-distribution-using-numpy</a></p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Skewed</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">5</span> <span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/34ce8b4092b934ff2e838ab96f2ad498/noise-10.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/9f45d849ca786fbdd501036b8593cb2f/noise-10.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/509e623ccc4e1d7bef2162323090b9b2/noise-10.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/517e2845156a655b372c7c4d83058635/noise-10.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-10.png" class="plot-directive" src="../_images/noise-10.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="smoothgaussian">
+<h2>SmoothGaussian<a class="headerlink" href="#smoothgaussian" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.SmoothGaussian">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">SmoothGaussian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.SmoothGaussian" title="Link to this definition">¶</a></dt>
+<dd><p>Smooth (correlated) Gaussian noise.</p>
+<p>Arguments:</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>mu</em> —- mean (float or int) (default 0)</p>
+<p><em>sigma</em> —- standard deviation (float or int) (default 1)</p>
+<p><em>fwhm</em> —- smoothness (float or int) (default 20); this is the full-width-at-half-maximum of a Gaussian kernel which is convolved with uncorrelated Gaussian noise;  the resulting smooth noise is re-scaled to unit variance</p>
+<p><em>pad</em> —- whether to pad continuum when smoothing (True or False) (default False);  unpadded noise has the same value at the beginning and end of the continuum</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothGaussian</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/417aeb42a4c0d27d6a98a9af04b197fe/noise-11.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/69c3867396230a4420c86838554cada3/noise-11.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/f3df8b498cf493544135a4dfdbcec3fd/noise-11.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/8dc3f41993264dcb96f4c6f11d779e46/noise-11.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-11.png" class="plot-directive" src="../_images/noise-11.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="smoothskewed">
+<h2>SmoothSkewed<a class="headerlink" href="#smoothskewed" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.SmoothSkewed">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">SmoothSkewed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwhm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.SmoothSkewed" title="Link to this definition">¶</a></dt>
+<dd><p>Smooth, skewed noise.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This smooth skewed distribution implementation is preliminary and will    only accept skewness parameter “alpha” values in the range (1, 5). To skew in the    opposite direction use (-5, -1).  Note that skewed distributions are approximate    and may not be consistent with theoretical solutions.</p>
+</div>
+<p>Arguments:</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>mu</em> —- mean (float or int) (default 0)</p>
+<p><em>sigma</em> —- standard deviation (float or int) (default 1)</p>
+<p><em>fwhm</em> —- smoothness (float or int) (default 20); this is the full-width-at-half-maximum of a Gaussian kernel which is convolved with uncorrelated Gaussian noise;  the resulting smooth noise is re-scaled to unit variance</p>
+<p><em>pad</em> —- whether to pad continuum when smoothing (True or False) (default False);  unpadded noise has the same value at the beginning and end of the continuum</p>
+<p><em>alpha</em> —- skewness (float or int between -5 and 5) (default 0)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">SmoothSkewed</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fwhm</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=-</span><span class="mi">3</span> <span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/0378e1a1e36e6bd0b870f105f2429e13/noise-12.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ecd3fc850f47fa671963d04e62c008dc/noise-12.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/866b0bd7bd00c13bd761547b8a12c9b0/noise-12.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/9c870b27b56a1736561dc5e58b3f604d/noise-12.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-12.png" class="plot-directive" src="../_images/noise-12.png" />
+</figure>
+</dd></dl>
+
+</section>
+<section id="uniform">
+<h2>Uniform<a class="headerlink" href="#uniform" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="power1d.noise.Uniform">
+<span class="sig-prename descclassname"><span class="pre">power1d.noise.</span></span><span class="sig-name descname"><span class="pre">Uniform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">J</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">101</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x0</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x1</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#power1d.noise.Uniform" title="Link to this definition">¶</a></dt>
+<dd><p>Uniform noise.</p>
+<p>Arguments:</p>
+<p><em>J</em> —- sample size (int) (default 1)</p>
+<p><em>Q</em> —- continuum size (int) (default 101)</p>
+<p><em>x0</em> —- minimum value (float or int) (default 0)</p>
+<p><em>x1</em> —- maximum value (float or int) (default 1)</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">power1d</span>
+
+<span class="n">noise</span>   <span class="o">=</span> <span class="n">power1d</span><span class="o">.</span><span class="n">noise</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span> <span class="n">J</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">Q</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="mf">1.0</span> <span class="p">)</span>
+<span class="n">noise</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference download internal" download="" href="../_downloads/1c63f1d3810300024a7fd526bcf3e1bd/noise-13.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/5371f9370f1e54f86f519de8a9c226dc/noise-13.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/b9a4483e96314c6afee24ba9939bb3b1/noise-13.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6740a34537818c885958fb9f8ac99f29/noise-13.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default">
+<img alt="../_images/noise-13.png" class="plot-directive" src="../_images/noise-13.png" />
+</figure>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">power1d.noise</a><ul>
+<li><a class="reference internal" href="#from-array">from_array</a><ul>
+<li><a class="reference internal" href="#power1d.noise.from_array"><code class="docutils literal notranslate"><span class="pre">from_array()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#from-residuals">from_residuals</a><ul>
+<li><a class="reference internal" href="#power1d.noise.from_residuals"><code class="docutils literal notranslate"><span class="pre">from_residuals()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additive">Additive</a><ul>
+<li><a class="reference internal" href="#power1d.noise.Additive"><code class="docutils literal notranslate"><span class="pre">Additive()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constantgaussian">ConstantGaussian</a><ul>
+<li><a class="reference internal" href="#power1d.noise.ConstantGaussian"><code class="docutils literal notranslate"><span class="pre">ConstantGaussian()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constantuniform">ConstantUniform</a><ul>
+<li><a class="reference internal" href="#power1d.noise.ConstantUniform"><code class="docutils literal notranslate"><span class="pre">ConstantUniform()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gaussian">Gaussian</a><ul>
+<li><a class="reference internal" href="#power1d.noise.Gaussian"><code class="docutils literal notranslate"><span class="pre">Gaussian()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mixture">Mixture</a><ul>
+<li><a class="reference internal" href="#power1d.noise.Mixture"><code class="docutils literal notranslate"><span class="pre">Mixture()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scaled">Scaled</a><ul>
+<li><a class="reference internal" href="#power1d.noise.Scaled"><code class="docutils literal notranslate"><span class="pre">Scaled()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signaldependent">SignalDependent</a><ul>
+<li><a class="reference internal" href="#power1d.noise.SignalDependent"><code class="docutils literal notranslate"><span class="pre">SignalDependent()</span></code></a></li>
+<li><a class="reference internal" href="#power1d.noise.Skewed"><code class="docutils literal notranslate"><span class="pre">Skewed()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smoothgaussian">SmoothGaussian</a><ul>
+<li><a class="reference internal" href="#power1d.noise.SmoothGaussian"><code class="docutils literal notranslate"><span class="pre">SmoothGaussian()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smoothskewed">SmoothSkewed</a><ul>
+<li><a class="reference internal" href="#power1d.noise.SmoothSkewed"><code class="docutils literal notranslate"><span class="pre">SmoothSkewed()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#uniform">Uniform</a><ul>
+<li><a class="reference internal" href="#power1d.noise.Uniform"><code class="docutils literal notranslate"><span class="pre">Uniform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="models.html"
+                          title="previous chapter">power1d.models</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="prob.html"
+                          title="next chapter">power1d.prob</a></p>
+  </div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/API/noise.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<search id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="Related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="prob.html" title="power1d.prob"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="models.html" title="power1d.models"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">power1d 0.1.7 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../API.html" >API</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">power1d.noise</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+    &#169; Copyright 2023, Todd Pataky.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.1.
+    </div>
+  </body>
+</html>
