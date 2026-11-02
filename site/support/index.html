@@ -36,8 +36,9 @@
 <h1>Support</h1>
 
 <ul>
-<li><b>Questions, discussion and feature requests</b>: the spm1d forum (see <a href="#forum">Forum and private support</a>)</li>
+<li><b>Questions and discussion</b>: the spm1d forum (see <a href="#forum">Forum and private support</a>)</li>
 <li><b>Bug reports</b>: the issue tracker of the package you are using (see <a href="#bug-reports">Bug reports</a> and <a href="#bug-report-guidelines">Bug report guidelines</a>)</li>
+<li><b>Feature requests</b>: the issue tracker of the package you are using (see <a href="#feature-requests">Feature requests</a>)</li>
 <li><b>Email support</b> is unavailable; if you have questions please use the spm1d forum</li>
 </ul>
 
@@ -46,10 +47,11 @@
 issue in the repository of the version you are using, with a minimal example
 that reproduces it:</p>
 <ul>
-<li>spm1d 0.4 (Python): <a href="https://github.com/0todd0000/spm1d-v0.4/issues">spm1d-v0.4/issues</a></li>
-<li>spm1d 0.4 (MATLAB): <a href="https://github.com/0todd0000/spm1d-matlab-v0.4/issues">spm1d-matlab-v0.4/issues</a></li>
-<li>rft1d: <a href="https://github.com/0todd0000/rft1d/issues">rft1d/issues</a></li>
-<li>power1d: <a href="https://github.com/0todd0000/power1d/issues">power1d/issues</a></li>
+<li>spm1d 0.5 (Python): <a href="https://github.com/spm1d-org/spm1d-v0.5/issues">spm1d-v0.5/issues</a></li>
+<li>spm1d 0.4 (Python): <a href="https://github.com/spm1d-org/spm1d-v0.4/issues">spm1d-v0.4/issues</a></li>
+<li>spm1d 0.4 (MATLAB): <a href="https://github.com/spm1d-org/spm1d-matlab-v0.4/issues">spm1d-matlab-v0.4/issues</a></li>
+<li>rft1d: <a href="https://github.com/spm1d-org/rft1d/issues">rft1d/issues</a></li>
+<li>power1d: <a href="https://github.com/spm1d-org/power1d/issues">power1d/issues</a></li>
 <li>registration1d: <a href="https://github.com/spm1d-org/registration1d/issues">registration1d/issues</a></li>
 </ul>
 
@@ -94,7 +96,7 @@ that reproduces it:</p>
 <li><b>What you expected to happen</b> and why.</li>
 <li><b>What actually happened</b>: spm1d outputs and/or figures. If an unexpected error or warning was produced then copy the full error/warning and paste as text into the bug report.</li>
 <li><b>One problem per issue.</b> Two problems should be submitted as separate issues.</li>
-<li><b>Configuration details</b>: the versions of spm1d, Python, NumPy, SciPy and Matplotlib, and your operating system.</li>
+<li><b>Configuration details</b>: run <code>&lt;package&gt;.get_config()</code> (for example <code>spm1d.get_config()</code>) and paste the output.</li>
 </ul>
 
 <p><b>Template</b></p>
@@ -119,7 +121,7 @@ print( spmi )
 
 ...
 
-#### Versions
+#### Configuration (output of spm1d.get_config())
 
 ```
 spm1d       ...
@@ -129,6 +131,7 @@ scipy       ...
 matplotlib  ...
 python      ...
 platform    ...
+install     ...
 ```
 </code></pre>
 
@@ -140,8 +143,8 @@ platform    ...
 <li><b>Multiple problems.</b> Open a separate issue for each problem you encounter.</li>
 </ul>
 
-<h2>Feature requests</h2>
-<p>Please submit feature requests to the spm1d forum. Describe what you want to do and/or the feature. Please do not submit requests for non-Python support (MATLAB, R, etc.).</p>
+<h2 id="feature-requests">Feature requests</h2>
+<p>Please submit feature requests using the <b>Feature request</b> form in the issue tracker of the relevant package (<b>New issue</b> &rarr; <b>Feature request</b>). Describe what you want to do and/or the feature. Please do not submit requests for non-Python support (MATLAB, R, etc.).</p>
 
 <h2 id="forum">Forum and private support</h2>
 <ul>
@@ -150,7 +153,7 @@ platform    ...
 </ul>
 
 <h2>Supporting development</h2>
-<p>Contributions are welcome; please see the <a href="../contributing/">contributing guidelines</a>.</p>
+<p>Contributions are welcome; please see the <a href="../contributing/">contributing guidelines</a>. To propose a contribution, use the <b>Contribution</b> form in the issue tracker of the relevant package (<b>New issue</b> &rarr; <b>Contribution</b>).</p>
 
 </body>
 </html>
