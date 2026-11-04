@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>spm1d 0.5 — Webinars</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; max-width: 52rem; margin: 3rem auto; padding: 0 1.25rem; color: #222; line-height: 1.5; }
+  h1 { font-size: 2rem; }
+  a.home { color: #777; text-decoration: none; font-size: 0.95rem; }
+  .sessions { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0 0.75rem; }
+  @media (max-width: 40rem) { .sessions { grid-template-columns: 1fr; } }
+  .session { padding: 1rem 1.25rem; border-radius: 8px; color: #fff; }
+  .session:nth-child(1) { background: #1f4e79; }
+  .session:nth-child(2) { background: #922913; }
+  .session .name { display: block; font-size: 1.35rem; font-weight: 600; }
+  .session .local { display: block; white-space: pre-line; font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); margin-top: 0.3rem; }
+  .tz { font-size: 0.9rem; color: #555; }
+  .tz select { font: inherit; padding: 0.2rem 0.3rem; border: 1px solid #d0d7de; border-radius: 6px; max-width: 100%; }
+  form { margin-top: 1.5rem; }
+  label.q { display: block; font-weight: 600; margin: 1.1rem 0 0.3rem; }
+  input[type=text], input[type=email], select.f, textarea { width: 100%; box-sizing: border-box; padding: 0.5rem 0.6rem; border: 1px solid #d0d7de; border-radius: 6px; font: inherit; }
+  textarea { min-height: 5rem; }
+  .opts label { display: inline-block; margin: 0.15rem 1.1rem 0.15rem 0; }
+  .note { font-size: 0.9rem; color: #555; }
+  button { margin-top: 1.5rem; padding: 0.6rem 1.2rem; border: 0; border-radius: 6px; background: #1f4e79; color: #fff; font: inherit; cursor: pointer; }
+  button:hover { filter: brightness(1.15); }
+  input.other { margin-top: 0.4rem; }
+  .g-recaptcha { margin-top: 1.5rem; }
+  #captcha-msg { display: none; color: #922913; font-size: 0.9rem; margin: 0.4rem 0 0; }
+  #done { display: none; margin-top: 1.5rem; padding: 0.8rem 1rem; border: 1px solid #e5e5e5; border-radius: 8px; background: #fafafa; }
+</style>
+<link rel="stylesheet" href="../menu.css">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+<details class="side">
+<summary aria-label="Menu">&#9776;</summary>
+<ul>
+<li><a href="../">Home</a></li>
+<li class="sep" role="separator"></li>
+<li><a href="../ai/">AI use</a></li>
+<li><a href="../code-of-conduct/">Code of conduct</a></li>
+<li><a href="../contributing/">Contributing</a></li>
+<li class="sep" role="separator"></li>
+<li><a href="../support/">Support</a></li>
+<li><a href="../webinars/">Webinars</a></li>
+</ul>
+</details>
+
+<a class="home" href="../">&larr; spm1d</a>
+<h1>spm1d 0.5 webinars</h1>
+
+<p>Two free spm1d 0.5 webinars will be conducted on Zoom in mid-February 2027.</p>
+
+<div class="sessions">
+<div class="session" data-utc="2027-02-03T23:00:00Z"><span class="name">Session 1</span><span class="local"></span></div>
+<div class="session" data-utc="2027-02-11T11:00:00Z"><span class="name">Session 2</span><span class="local"></span></div>
+</div>
+
+<p class="tz">Show times in: <select id="tz"></select></p>
+
+<br>
+
+<p><b>Registration is required.</b> Space is limited due to Zoom license restrictions.</p>
+
+<br>
+
+<form id="reg">
+<input type="hidden" name="form" value="webinar-2027-02">
+
+<label class="q" for="name">Name</label>
+<input type="text" id="name" name="name" required>
+
+<label class="q" for="email">Email address</label>
+<input type="email" id="email" name="email" required>
+
+<label class="q" for="affiliation">Affiliation</label>
+<input type="text" id="affiliation" name="affiliation" required>
+
+<label class="q">Session</label>
+<div class="opts">
+<label><input type="radio" name="session" value="1" required> Session 1</label>
+<label><input type="radio" name="session" value="2"> Session 2</label>
+</div>
+
+<label class="q" for="sector">Sector</label>
+<select class="f" id="sector" name="sector" required>
+<option value="">Choose</option>
+<option>Academia</option>
+<option>Industry</option>
+<option>Clinical</option>
+<option>Government</option>
+<option>Other</option>
+</select>
+<input type="text" class="other" id="sector_other" name="sector_other" placeholder="Please specify" hidden>
+
+<label class="q" for="role">Role (choose one)</label>
+<select class="f" id="role" name="role" required>
+<option value="">Choose</option>
+<option>Undergraduate student</option>
+<option>Graduate student</option>
+<option>Postdoc</option>
+<option>Faculty</option>
+<option>Researcher</option>
+<option>Engineer</option>
+<option>Clinician</option>
+<option>Other</option>
+</select>
+<input type="text" class="other" id="role_other" name="role_other" placeholder="Please specify" hidden>
+
+<label class="q" for="country">Country</label>
+<select class="f" id="country" name="country" required>
+<option value="">Choose</option>
+</select>
+<input type="text" class="other" id="country_other" name="country_other" placeholder="Please specify" hidden>
+
+<label class="q" for="field">Research field</label>
+<select class="f" id="field" name="field" required>
+<option value="">Choose</option>
+<option>Biomechanics</option>
+<option>Neuroscience</option>
+<option>Sport science</option>
+<option>Rehabilitation</option>
+<option>Other</option>
+</select>
+<input type="text" class="other" id="field_other" name="field_other" placeholder="Please specify" hidden>
+
+<label class="q" for="experience">spm1d experience</label>
+<select class="f" id="experience" name="experience" required>
+<option value="">Choose</option>
+<option>None</option>
+<option> < 1 year</option>
+<option>1 to 3 years</option>
+<option>> 3 years</option>
+</select>
+
+<label class="q">spm1d 0.4 version used</label>
+<div class="opts">
+<label><input type="radio" name="version" value="Python" required> Python</label>
+<label><input type="radio" name="version" value="MATLAB"> MATLAB</label>
+<label><input type="radio" name="version" value="Both"> Both</label>
+<label><input type="radio" name="version" value="Neither"> Neither</label>
+</div>
+
+<label class="q">Topics of most interest</label>
+<div class="opts">
+<label><input type="checkbox" name="topics" value="Basics"> Basics</label>
+<label><input type="checkbox" name="topics" value="Differences between 0.4 and 0.5"> Differences between 0.4 and 0.5</label>
+<label><input type="checkbox" name="topics" value="Statistical theory"> Statistical theory</label>
+<label><input type="checkbox" name="topics" value="Code details"> Code details</label>
+<label><input type="checkbox" name="topics" value="Reporting results"> Reporting results</label>
+</div>
+
+<label class="q" for="questions">Questions or other topics you would like covered</label>
+<textarea id="questions" name="questions"></textarea>
+
+<div class="opts" style="margin-top: 1.1rem">
+<label><input type="checkbox" name="news" value="yes" required> Email me about future spm1d.org news</label>
+</div>
+
+<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+<p id="captcha-msg">Please confirm that you are not a robot.</p>
+
+<button type="submit">Register</button>
+</form>
+
+<div id="done"><b>Thank you for registering.</b> A confirmation has been sent to your email address. The Zoom link will be emailed before the webinar.</div>
+
+<script>
+const ENDPOINT = '';
+const COUNTRIES = 'AF AL DZ AD AO AG AR AM AU AT AZ BS BH BD BB BY BE BZ BJ BT BO BA BW BR BN BG BF BI CV KH CM CA CF TD CL CN CO KM CG CD CR CI HR CU CY CZ DK DJ DM DO EC EG SV GQ ER EE SZ ET FJ FI FR GA GM GE DE GH GR GD GT GN GW GY HT HN HK HU IS IN ID IR IQ IE IL IT JM JP JO KZ KE KI KP KR KW KG LA LV LB LS LR LY LI LT LU MO MG MW MY MV ML MT MH MR MU MX FM MD MC MN ME MA MZ MM NA NR NP NL NZ NI NE NG MK NO OM PK PW PS PA PG PY PE PH PL PT PR QA RO RU RW KN LC VC WS SM ST SA SN RS SC SL SG SK SI SB SO ZA SS ES LK SD SR SE CH SY TW TJ TZ TH TL TG TO TT TN TR TM TV UG UA AE GB US UY UZ VU VA VE VN YE ZM ZW'.split(' ');
+
+const names = new Intl.DisplayNames(['en'], { type: 'region' });
+const country = document.getElementById('country');
+COUNTRIES.map(c => names.of(c)).sort((a, b) => a.localeCompare(b)).forEach(n => country.add(new Option(n, n)));
+country.add(new Option('Other', 'Other'));
+
+const ZONES = [["AD","","Europe/Andorra"],["AE","","Asia/Dubai"],["AF","","Asia/Kabul"],["AG","","America/Antigua"],["AI","","America/Anguilla"],["AL","","Europe/Tirane"],["AM","","Asia/Yerevan"],["AO","","Africa/Luanda"],["AQ","McMurdo","Antarctica/McMurdo"],["AQ","Casey","Antarctica/Casey"],["AQ","Davis","Antarctica/Davis"],["AQ","DumontDUrville","Antarctica/DumontDUrville"],["AQ","Mawson","Antarctica/Mawson"],["AQ","Palmer","Antarctica/Palmer"],["AQ","Syowa","Antarctica/Syowa"],["AQ","Troll","Antarctica/Troll"],["AR","","America/Argentina/Buenos_Aires"],["AS","","Pacific/Pago_Pago"],["AT","","Europe/Vienna"],["AU","Sydney, Melbourne","Australia/Sydney"],["AU","Adelaide","Australia/Adelaide"],["AU","Brisbane","Australia/Brisbane"],["AU","Darwin","Australia/Darwin"],["AU","Perth","Australia/Perth"],["AU","Eucla","Australia/Eucla"],["AW","","America/Aruba"],["AX","","Europe/Mariehamn"],["AZ","","Asia/Baku"],["BA","","Europe/Sarajevo"],["BB","","America/Barbados"],["BD","","Asia/Dhaka"],["BE","","Europe/Brussels"],["BF","","Africa/Ouagadougou"],["BG","","Europe/Sofia"],["BH","","Asia/Bahrain"],["BI","","Africa/Bujumbura"],["BJ","","Africa/Porto-Novo"],["BL","","America/St_Barthelemy"],["BM","","Atlantic/Bermuda"],["BN","","Asia/Brunei"],["BO","","America/La_Paz"],["BQ","","America/Kralendijk"],["BR","Noronha","America/Noronha"],["BR","São Paulo","America/Sao_Paulo"],["BR","Manaus","America/Manaus"],["BR","Rio Branco","America/Rio_Branco"],["BS","","America/Nassau"],["BT","","Asia/Thimphu"],["BW","","Africa/Gaborone"],["BY","","Europe/Minsk"],["BZ","","America/Belize"],["CA","St. John's","America/St_Johns"],["CA","Halifax","America/Halifax"],["CA","Toronto","America/Toronto"],["CA","Winnipeg","America/Winnipeg"],["CA","Regina","America/Regina"],["CA","Edmonton","America/Edmonton"],["CA","Cambridge Bay","America/Cambridge_Bay"],["CA","Vancouver","America/Vancouver"],["CC","","Indian/Cocos"],["CD","Kinshasa","Africa/Kinshasa"],["CD","Lubumbashi","Africa/Lubumbashi"],["CF","","Africa/Bangui"],["CG","","Africa/Brazzaville"],["CH","","Europe/Zurich"],["CI","","Africa/Abidjan"],["CK","","Pacific/Rarotonga"],["CL","Santiago","America/Santiago"],["CL","Easter","Pacific/Easter"],["CM","","Africa/Douala"],["CN","Shanghai","Asia/Shanghai"],["CN","Urumqi","Asia/Urumqi"],["CO","","America/Bogota"],["CR","","America/Costa_Rica"],["CU","","America/Havana"],["CV","","Atlantic/Cape_Verde"],["CW","","America/Curacao"],["CX","","Indian/Christmas"],["CY","","Asia/Nicosia"],["CZ","","Europe/Prague"],["DE","","Europe/Berlin"],["DJ","","Africa/Djibouti"],["DK","","Europe/Copenhagen"],["DM","","America/Dominica"],["DO","","America/Santo_Domingo"],["DZ","","Africa/Algiers"],["EC","Guayaquil","America/Guayaquil"],["EC","Galapagos","Pacific/Galapagos"],["EE","","Europe/Tallinn"],["EG","","Africa/Cairo"],["EH","","Africa/El_Aaiun"],["ER","","Africa/Asmara"],["ES","Madrid","Europe/Madrid"],["ES","Canary","Atlantic/Canary"],["ET","","Africa/Addis_Ababa"],["FI","","Europe/Helsinki"],["FJ","","Pacific/Fiji"],["FK","","Atlantic/Stanley"],["FM","Chuuk","Pacific/Chuuk"],["FM","Pohnpei","Pacific/Pohnpei"],["FO","","Atlantic/Faroe"],["FR","","Europe/Paris"],["GA","","Africa/Libreville"],["GB","","Europe/London"],["GD","","America/Grenada"],["GE","","Asia/Tbilisi"],["GF","","America/Cayenne"],["GG","","Europe/Guernsey"],["GH","","Africa/Accra"],["GI","","Europe/Gibraltar"],["GL","Nuuk","America/Nuuk"],["GL","Danmarkshavn","America/Danmarkshavn"],["GL","Thule","America/Thule"],["GM","","Africa/Banjul"],["GN","","Africa/Conakry"],["GP","","America/Guadeloupe"],["GQ","","Africa/Malabo"],["GR","","Europe/Athens"],["GS","","Atlantic/South_Georgia"],["GT","","America/Guatemala"],["GU","","Pacific/Guam"],["GW","","Africa/Bissau"],["GY","","America/Guyana"],["HK","","Asia/Hong_Kong"],["HN","","America/Tegucigalpa"],["HR","","Europe/Zagreb"],["HT","","America/Port-au-Prince"],["HU","","Europe/Budapest"],["ID","Jakarta","Asia/Jakarta"],["ID","Makassar","Asia/Makassar"],["ID","Jayapura","Asia/Jayapura"],["IE","","Europe/Dublin"],["IL","","Asia/Jerusalem"],["IM","","Europe/Isle_of_Man"],["IN","","Asia/Kolkata"],["IO","","Indian/Chagos"],["IQ","","Asia/Baghdad"],["IR","","Asia/Tehran"],["IS","","Atlantic/Reykjavik"],["IT","","Europe/Rome"],["JE","","Europe/Jersey"],["JM","","America/Jamaica"],["JO","","Asia/Amman"],["JP","","Asia/Tokyo"],["KE","","Africa/Nairobi"],["KG","","Asia/Bishkek"],["KH","","Asia/Phnom_Penh"],["KI","Tarawa","Pacific/Tarawa"],["KI","Kanton","Pacific/Kanton"],["KI","Kiritimati","Pacific/Kiritimati"],["KM","","Indian/Comoro"],["KN","","America/St_Kitts"],["KP","","Asia/Pyongyang"],["KR","","Asia/Seoul"],["KW","","Asia/Kuwait"],["KY","","America/Cayman"],["KZ","","Asia/Almaty"],["LA","","Asia/Vientiane"],["LB","","Asia/Beirut"],["LC","","America/St_Lucia"],["LI","","Europe/Vaduz"],["LK","","Asia/Colombo"],["LR","","Africa/Monrovia"],["LS","","Africa/Maseru"],["LT","","Europe/Vilnius"],["LU","","Europe/Luxembourg"],["LV","","Europe/Riga"],["LY","","Africa/Tripoli"],["MA","","Africa/Casablanca"],["MC","","Europe/Monaco"],["MD","","Europe/Chisinau"],["ME","","Europe/Podgorica"],["MF","","America/Marigot"],["MG","","Indian/Antananarivo"],["MH","","Pacific/Majuro"],["MK","","Europe/Skopje"],["ML","","Africa/Bamako"],["MM","","Asia/Yangon"],["MN","Ulaanbaatar","Asia/Ulaanbaatar"],["MN","Hovd","Asia/Hovd"],["MO","","Asia/Macau"],["MP","","Pacific/Saipan"],["MQ","","America/Martinique"],["MR","","Africa/Nouakchott"],["MS","","America/Montserrat"],["MT","","Europe/Malta"],["MU","","Indian/Mauritius"],["MV","","Indian/Maldives"],["MW","","Africa/Blantyre"],["MX","Mexico City","America/Mexico_City"],["MX","Cancun","America/Cancun"],["MX","Ciudad Juarez","America/Ciudad_Juarez"],["MX","Tijuana","America/Tijuana"],["MY","","Asia/Kuala_Lumpur"],["MZ","","Africa/Maputo"],["NA","","Africa/Windhoek"],["NC","","Pacific/Noumea"],["NE","","Africa/Niamey"],["NF","","Pacific/Norfolk"],["NG","","Africa/Lagos"],["NI","","America/Managua"],["NL","","Europe/Amsterdam"],["NO","","Europe/Oslo"],["NP","","Asia/Kathmandu"],["NR","","Pacific/Nauru"],["NU","","Pacific/Niue"],["NZ","Auckland","Pacific/Auckland"],["NZ","Chatham","Pacific/Chatham"],["OM","","Asia/Muscat"],["PA","","America/Panama"],["PE","","America/Lima"],["PF","Tahiti","Pacific/Tahiti"],["PF","Marquesas","Pacific/Marquesas"],["PF","Gambier","Pacific/Gambier"],["PG","Port Moresby","Pacific/Port_Moresby"],["PG","Bougainville","Pacific/Bougainville"],["PH","","Asia/Manila"],["PK","","Asia/Karachi"],["PL","","Europe/Warsaw"],["PM","","America/Miquelon"],["PN","","Pacific/Pitcairn"],["PR","","America/Puerto_Rico"],["PS","","Asia/Gaza"],["PT","Lisbon","Europe/Lisbon"],["PT","Azores","Atlantic/Azores"],["PW","","Pacific/Palau"],["PY","","America/Asuncion"],["QA","","Asia/Qatar"],["RE","","Indian/Reunion"],["RO","","Europe/Bucharest"],["RS","","Europe/Belgrade"],["RU","Kaliningrad","Europe/Kaliningrad"],["RU","Moscow","Europe/Moscow"],["RU","Astrakhan","Europe/Astrakhan"],["RU","Yekaterinburg","Asia/Yekaterinburg"],["RU","Omsk","Asia/Omsk"],["RU","Novosibirsk","Asia/Novosibirsk"],["RU","Irkutsk","Asia/Irkutsk"],["RU","Chita","Asia/Chita"],["RU","Vladivostok","Asia/Vladivostok"],["RU","Magadan","Asia/Magadan"],["RU","Kamchatka","Asia/Kamchatka"],["UA","","Europe/Kyiv"],["RW","","Africa/Kigali"],["SA","","Asia/Riyadh"],["SB","","Pacific/Guadalcanal"],["SC","","Indian/Mahe"],["SD","","Africa/Khartoum"],["SE","","Europe/Stockholm"],["SG","","Asia/Singapore"],["SH","","Atlantic/St_Helena"],["SI","","Europe/Ljubljana"],["SJ","","Arctic/Longyearbyen"],["SK","","Europe/Bratislava"],["SL","","Africa/Freetown"],["SM","","Europe/San_Marino"],["SN","","Africa/Dakar"],["SO","","Africa/Mogadishu"],["SR","","America/Paramaribo"],["SS","","Africa/Juba"],["ST","","Africa/Sao_Tome"],["SV","","America/El_Salvador"],["SX","","America/Lower_Princes"],["SY","","Asia/Damascus"],["SZ","","Africa/Mbabane"],["TC","","America/Grand_Turk"],["TD","","Africa/Ndjamena"],["TF","","Indian/Kerguelen"],["TG","","Africa/Lome"],["TH","","Asia/Bangkok"],["TJ","","Asia/Dushanbe"],["TK","","Pacific/Fakaofo"],["TL","","Asia/Dili"],["TM","","Asia/Ashgabat"],["TN","","Africa/Tunis"],["TO","","Pacific/Tongatapu"],["TR","","Europe/Istanbul"],["TT","","America/Port_of_Spain"],["TV","","Pacific/Funafuti"],["TW","","Asia/Taipei"],["TZ","","Africa/Dar_es_Salaam"],["UG","","Africa/Kampala"],["UM","Midway","Pacific/Midway"],["UM","Wake","Pacific/Wake"],["US","New York","America/New_York"],["US","Chicago","America/Chicago"],["US","Denver, Phoenix","America/Denver"],["US","Los Angeles","America/Los_Angeles"],["US","Anchorage","America/Anchorage"],["US","Honolulu","Pacific/Honolulu"],["UY","","America/Montevideo"],["UZ","","Asia/Samarkand"],["VA","","Europe/Vatican"],["VC","","America/St_Vincent"],["VE","","America/Caracas"],["VG","","America/Tortola"],["VI","","America/St_Thomas"],["VN","","Asia/Ho_Chi_Minh"],["VU","","Pacific/Efate"],["WF","","Pacific/Wallis"],["WS","","Pacific/Apia"],["YE","","Asia/Aden"],["YT","","Indian/Mayotte"],["ZA","","Africa/Johannesburg"],["ZM","","Africa/Lusaka"],["ZW","","Africa/Harare"]];
+
+const tzSelect = document.getElementById('tz');
+ZONES.map(([c, city, zone]) => [names.of(c) + (city ? ' (' + city + ')' : ''), zone])
+  .sort((a, b) => a[0].localeCompare(b[0]))
+  .forEach(([label, zone]) => tzSelect.add(new Option(label, zone, zone === 'Asia/Tokyo', zone === 'Asia/Tokyo')));
+
+function showLocal() {
+  const zone = tzSelect.value;
+  document.querySelectorAll('.session').forEach(s => {
+    const t = new Date(s.dataset.utc);
+    const text = t.toLocaleString('en-GB', { timeZone: zone, weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+    s.querySelector('.local').textContent = text + '\n' + tzSelect.options[tzSelect.selectedIndex].text;
+  });
+}
+tzSelect.addEventListener('change', showLocal);
+showLocal();
+
+document.querySelectorAll('input.other').forEach(other => {
+  const select = document.getElementById(other.id.replace('_other', ''));
+  select.addEventListener('change', () => {
+    const show = select.value === 'Other';
+    other.hidden = !show;
+    other.required = show;
+    if (!show) other.value = '';
+  });
+});
+
+const topics = [...document.querySelectorAll('input[name="topics"]')];
+function checkTopics() {
+  topics[0].setCustomValidity(topics.some(t => t.checked) ? '' : 'Please choose at least one topic.');
+}
+topics.forEach(t => t.addEventListener('change', checkTopics));
+checkTopics();
+
+document.getElementById('reg').addEventListener('submit', async e => {
+  e.preventDefault();
+  const captcha = document.getElementById('captcha-msg');
+  if (typeof grecaptcha === 'undefined' || !grecaptcha.getResponse()) { captcha.style.display = 'block'; return; }
+  captcha.style.display = 'none';
+  const form = e.target;
+  const data = new FormData(form);
+  const body = new URLSearchParams();
+  for (const key of new Set(data.keys())) body.append(key, data.getAll(key).join('; '));
+  if (ENDPOINT) await fetch(ENDPOINT, { method: 'POST', body });
+  form.style.display = 'none';
+  document.getElementById('done').style.display = 'block';
+});
+</script>
+
+</body>
+</html>
